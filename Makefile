@@ -1,0 +1,2 @@
+console:
+	ruby bin/console
