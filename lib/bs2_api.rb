@@ -3,6 +3,13 @@
 require 'bs2_api/version'
 require 'bs2_api/configuration'
 
+require 'bs2_api/entities/account'
+require 'bs2_api/entities/bank'
+require 'bs2_api/entities/customer'
+require 'bs2_api/entities/invoice'
+require 'bs2_api/entities/payment'
+require 'bs2_api/entities/pix_key'
+
 module Bs2Api
   class Bs2ApiError < StandardError; end
 

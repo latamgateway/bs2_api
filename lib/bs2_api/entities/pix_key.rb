@@ -4,10 +4,10 @@ module Bs2Api
       attr_accessor :id, :nickname, :value, :type
 
       def initialize(args = {})
-        @id       = args.fetch(:id)
-        @nickname = args.fetch(:nickname)
-        @value    = args.fetch(:value).to_f
-        @type     = args.fetch(:type)
+        @id       = args.fetch(:id, nil)
+        @nickname = args.fetch(:nickname, nil)
+        @value    = args.fetch(:value, 0).to_f
+        @type     = args.fetch(:type, nil)
       end
 
       def to_hash

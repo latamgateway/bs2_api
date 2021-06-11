@@ -4,10 +4,10 @@ module Bs2Api
 
     class Invoice
       def initialize(args = {})
-        @id          = args.fetch(:id)
-        @merchant_id = args.fetch(:merchant_id)
-        @receiver    = args.fetch(:receiver)
-        @payer       = args.fetch(:payer)
+        @id          = args.fetch(:id, nil)
+        @merchant_id = args.fetch(:merchant_id, nil)
+        @receiver    = args.fetch(:receiver, nil)
+        @payer       = args.fetch(:payer, nil)
       end
 
       def to_hash

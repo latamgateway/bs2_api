@@ -3,9 +3,9 @@ module Bs2Api
     attr_accessor :ispb, :account, :customer
     class Bank
       def initialize(args = {})
-        @ispb     = args.fetch(:ispb)
-        @account  = args.fetch(:account)
-        @customer = args.fetch(:customer)
+        @ispb     = args.fetch(:ispb, nil)
+        @account  = args.fetch(:account, nil)
+        @customer = args.fetch(:customer, nil)
       end
 
       def to_hash

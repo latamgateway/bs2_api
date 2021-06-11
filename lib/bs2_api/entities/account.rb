@@ -10,11 +10,11 @@ module Bs2Api
       }
 
       def initialize(args = {})
-        @bank_name  = args.fetch(:bank_name)
-        @owner_name = args.fetch(:owner_name)
-        @agency     = args.fetch(:agency)
-        @number     = args.fetch(:number)
-        @type       = args.fetch(:type)
+        @bank_name  = args.fetch(:bank_name, nil)
+        @owner_name = args.fetch(:owner_name, nil)
+        @agency     = args.fetch(:agency, nil)
+        @number     = args.fetch(:number, nil)
+        @type       = args.fetch(:type, nil)
       end
 
       def to_hash

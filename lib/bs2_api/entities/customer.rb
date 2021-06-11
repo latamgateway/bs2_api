@@ -9,10 +9,10 @@ module Bs2Api
       }
 
       def initialize(args = {})
-        @document      = args.fetch(:document)
-        @type          = args.fetch(:type)
-        @name          = args.fetch(:name)
-        @business_name = args.fetch(:business_name)
+        @document      = args.fetch(:document, nil)
+        @type          = args.fetch(:type, nil)
+        @name          = args.fetch(:name, nil)
+        @business_name = args.fetch(:business_name, nil)
       end
 
       def to_hash
