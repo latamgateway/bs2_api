@@ -1,30 +1,39 @@
+# frozen_string_literal: true
+
 module Bs2Api
   module Entities
     class PixKey
-      attr_accessor :id, :nickname, :value, :type
+      attr_accessor :key, :type
+
+      TYPES = {
+        cpf: 'CPF',
+        cnpj: 'CNPJ',
+        phone: 'PHONE',
+        email: 'EMAIL',
+        random: 'EVP'
+      }
 
       def initialize(args = {})
-        @id       = args.fetch(:id, nil)
-        @nickname = args.fetch(:nickname, nil)
-        @value    = args.fetch(:value, 0).to_f
-        @type     = args.fetch(:type, nil)
+        @key = args.fetch(:key, nil)
+        @type = args.fetch(:type, 'CPF')
       end
 
       def to_hash
-        {
-          "id": @id,
-          "apelido": @nickname,
-          "valor": @value,
-          "tipo": @kind
-        }
+        ActiveSupport::HashWithIndifferentAccess.new(
+          {
+            "valor": @key,
+            "tipo": @type
+          }
+        )
       end
 
-      def self.from_response(hash)
-        pix_key          = Bs2Api::Entities::PixKey.new
-        pix_key.id       = hash["id"]
-        pix_key.nickname = hash["apelido"]
-        pix_key.value    = hash["valor"].to_f
-        pix_key.type     = hash["tipo"]
+      def self.from_response(hash_payload)
+        hash = ActiveSupport::HashWithIndifferentAccess.new(hash_payload)
+        
+        Bs2Api::Entities::PixKey.new(
+          key: hash["valor"],
+          type: hash["tipo"]
+        )
       end
     end
   end

@@ -6,3 +6,8 @@ source "https://rubygems.org"
 gemspec
 
 gem "rake", "~> 13.0"
+
+group :test do
+  gem "pry-byebug", "~> 3.9"
+  gem 'uuid', '~> 2.3', '>= 2.3.9'
+end

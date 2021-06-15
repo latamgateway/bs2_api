@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 module Bs2Api
-  module Pix
-    attr_accessor :ispb, :account, :customer
+  module Entities
     class Bank
+      attr_accessor :ispb, :account, :customer
+
       def initialize(args = {})
         @ispb     = args.fetch(:ispb, nil)
         @account  = args.fetch(:account, nil)
@@ -9,21 +12,29 @@ module Bs2Api
       end
 
       def to_hash
-        {
-          "ispb": @ispb,
-          "conta": @account.to_hash,
-          "pessoa": @customer.to_hash
-        }
+        ActiveSupport::HashWithIndifferentAccess.new(
+          {
+            "ispb": get_ispb,
+            "conta": @account.to_hash,
+            "pessoa": @customer.to_hash
+          }
+        )
       end
 
-      def self.from_response(hash)
-        bank          = Bs2Api::Pix::Bank.new
-        bank.ispb     = hash["ispb"]
-        bank.account  = Bs2Api::Account.from_response(hash["conta"])
-        bank.customer = Bs2Api::Customer.from_response(hash["pessoa"])
+      def self.from_response(hash_payload)
+        hash = ActiveSupport::HashWithIndifferentAccess.new(hash_payload)
 
-        bank
+        Bs2Api::Entities::Bank.new(
+          ispb: hash["ispb"],
+          account: Bs2Api::Entities::Account.from_response(hash["conta"]),
+          customer: Bs2Api::Entities::Customer.from_response(hash["pessoa"])
+        )
       end
+
+      private
+        def get_ispb
+          Bs2Api::Util::BankService.find_by_code(@account.bank_code)["ispb"]
+        end
     end
   end
 end

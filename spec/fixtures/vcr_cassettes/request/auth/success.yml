@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://apihmz.bancobonsucesso.com.br/auth/oauth/v2/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&scope=pix.write%20pix.read
+    headers:
+      Authorization:
+      - Basic 123==
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - apihmz.bancobonsucesso.com.br
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Oneagent-Js-Injection:
+      - 'true'
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-store
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Tue, 15 Jun 2021 14:07:03 GMT
+      Content-Length:
+      - '141'
+      Connection:
+      - close
+      Set-Cookie:
+      - dtCookie=v_4_srv_1_sn_674AE8AAB10753CF43CFD804DBCFFBB1_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1_rcs-3Acss_0;
+        Path=/; Domain=.bancobonsucesso.com.br
+      Server-Timing:
+      - cdn-cache; desc=MISS
+      - 'dtRpid;desc="-1507705448" '
+      - edge; dur=310
+      - origin; dur=60
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Reffer-Policy:
+      - no-reffer; strict-origin-when-cross-origin
+      Access-Control-Allow-Origin:
+      - bancobonsucesso.com.br
+      Strict-Transport-Security:
+      - 'max-age=63072000; IncludeSubDomains: preload'
+    body:
+      encoding: UTF-8
+      string: "{\r\n  \"access_token\":\"ce20270a-09b9-43e2-bdd2-5753db8df2ef\",\r\n
+        \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":420,\r\n  \"scope\":\"pix.write
+        pix.read\"\r\n}"
+  recorded_at: Tue, 15 Jun 2021 14:07:03 GMT
+recorded_with: VCR 6.0.0

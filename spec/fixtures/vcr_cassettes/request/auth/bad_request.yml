@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://apihmz.bancobonsucesso.com.br/auth/oauth/v2/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&scope=pix.write%20pix.read
+    headers:
+      Authorization:
+      - Basic 123==
+      Connection:
+      - close
+      Host:
+      - apihmz.bancobonsucesso.com.br
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      X-Oneagent-Js-Injection:
+      - 'true'
+      X-Ca-Err:
+      - '3003103'
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '91'
+      Date:
+      - Tue, 15 Jun 2021 14:14:05 GMT
+      Connection:
+      - close
+      Set-Cookie:
+      - dtCookie=v_4_srv_2_sn_1427FA170B56E75A3A6AA9725D5ACDEE_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1_rcs-3Acss_0;
+        Path=/; Domain=.bancobonsucesso.com.br
+      Server-Timing:
+      - cdn-cache; desc=MISS
+      - 'dtRpid;desc="1516054748" '
+      - edge; dur=23
+      - origin; dur=45
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Reffer-Policy:
+      - no-reffer; strict-origin-when-cross-origin
+      Access-Control-Allow-Origin:
+      - bancobonsucesso.com.br
+      Strict-Transport-Security:
+      - 'max-age=63072000; IncludeSubDomains: preload'
+    body:
+      encoding: UTF-8
+      string: "{\r\n  \"error\":\"invalid_request\",\r\n  \"error_description\":\"Missing
+        or duplicate parameters\"\r\n}"
+  recorded_at: Tue, 15 Jun 2021 14:14:05 GMT
+recorded_with: VCR 6.0.0

@@ -3,19 +3,36 @@
 require 'bs2_api/version'
 require 'bs2_api/configuration'
 
+require 'bs2_api/initializers/object'
+require 'bs2_api/initializers/hash'
+
+require 'bs2_api/errors/base'
+require 'bs2_api/errors/invalid_pix_key'
+require 'bs2_api/errors/missing_configuration'
+require 'bs2_api/errors/unauthorized'
+require 'bs2_api/errors/bad_request'
+require 'bs2_api/errors/server_error'
+
 require 'bs2_api/entities/account'
 require 'bs2_api/entities/bank'
 require 'bs2_api/entities/customer'
-require 'bs2_api/entities/invoice'
 require 'bs2_api/entities/payment'
 require 'bs2_api/entities/pix_key'
 
-module Bs2Api
-  class Bs2ApiError < StandardError; end
+require 'bs2_api/payment/base'
+require 'bs2_api/payment/key'
+require 'bs2_api/payment/manual'
 
+require 'bs2_api/request/auth'
+
+require 'bs2_api/util/bank_service'
+
+require "active_support/core_ext/hash/indifferent_access"
+
+module Bs2Api
   ENDPOINT = {
     production: 'https://api.bs2.com:8443',
-    staging: 'https://apihmz.bancobonsucesso.com.br'
+    sandbox: 'https://apihmz.bancobonsucesso.com.br'
   }
 
   class << self
@@ -27,6 +44,22 @@ module Bs2Api
   
     def configure
       yield(configuration)
+    end
+
+    def endpoint
+      ENDPOINT[configuration.env.to_sym]
+    end
+
+    def production?
+      env == 'production'
+    end
+    
+    def sandbox?
+      env == 'sandbox'
+    end
+
+    def env
+      configuration.env
     end
   end
 end

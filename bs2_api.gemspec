@@ -27,5 +27,10 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "rspec", "~> 3.10"
+  spec.add_development_dependency "webmock", "~> 3.13"
+  spec.add_development_dependency "vcr", "~> 6.0"
+  spec.add_development_dependency "dotenv", "~> 2.7", ">= 2.7.6"
+
   spec.add_dependency "http", "~> 4.4"
+  spec.add_dependency "activesupport", "~> 6.1", ">= 6.1.3.2"
 end

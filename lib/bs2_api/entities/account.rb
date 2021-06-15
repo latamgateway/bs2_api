@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Bs2Api
   module Entities
     class Account
-      attr_accessor :bank_name, :owner_name, :agency, :number, :type
+      attr_accessor :bank_code, :bank_name, :agency, :number, :type
   
       TYPES = {
         checking: 'ContaCorrente',
@@ -10,30 +12,35 @@ module Bs2Api
       }
 
       def initialize(args = {})
+        @bank_code  = args.fetch(:bank_code, nil)
         @bank_name  = args.fetch(:bank_name, nil)
-        @owner_name = args.fetch(:owner_name, nil)
         @agency     = args.fetch(:agency, nil)
         @number     = args.fetch(:number, nil)
         @type       = args.fetch(:type, nil)
       end
 
       def to_hash
-        {
-          "banco": @bank_name,
-          "bancoNome": owner_name,
-          "agencia": @agency,
-          "numero": @number,
-          "tipo": @type
-        }
+        ActiveSupport::HashWithIndifferentAccess.new(
+          {
+            "banco": @bank_code,
+            "bancoNome": bank_name,
+            "agencia": @agency,
+            "numero": @number,
+            "tipo": @type
+          }
+        )
       end
 
-      def self.from_response(hash)
-        account            = Bs2::Entities::Account.new
-        account.bank_name  = hash["banco"]
-        account.owner_name = hash["bancoNome"]
-        account.agency     = hash["agencia"]
-        account.number     = hash["numero"]
-        account.type       = hash["tipo"]
+      def self.from_response(hash_payload)
+        hash = ActiveSupport::HashWithIndifferentAccess.new(hash_payload)
+
+        Bs2Api::Entities::Account.new(
+          bank_code: hash["banco"],
+          bank_name: hash["bancoNome"],
+          agency: hash["agencia"],
+          number: hash["numero"],
+          type: hash["tipo"]
+        )
       end
 
       def checking?
@@ -47,7 +54,6 @@ module Bs2Api
       def saving?
         @type == TYPES[:saving]
       end
-
     end
   end
 end

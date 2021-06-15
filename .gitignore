@@ -11,3 +11,5 @@
 .rspec_status
 
 *.gem
+
+.env.test
