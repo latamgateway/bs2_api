@@ -7,18 +7,14 @@ http_interactions:
       encoding: UTF-8
       string: grant_type=client_credentials&scope=pix.write%20pix.read
     headers:
-      Authorization:
-      - Basic 123==
       Content-Type:
       - application/x-www-form-urlencoded
       Accept:
       - application/json
-      Connection:
-      - close
-      Host:
-      - apihmz.bancobonsucesso.com.br
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       User-Agent:
-      - http.rb/4.4.1
+      - Ruby
   response:
     status:
       code: 200
@@ -32,20 +28,22 @@ http_interactions:
       - no-store
       Content-Type:
       - application/json;charset=UTF-8
+      Vary:
+      - Accept-Encoding
       Date:
-      - Tue, 15 Jun 2021 14:07:03 GMT
+      - Wed, 16 Jun 2021 14:09:36 GMT
       Content-Length:
       - '141'
       Connection:
-      - close
+      - keep-alive
       Set-Cookie:
-      - dtCookie=v_4_srv_1_sn_674AE8AAB10753CF43CFD804DBCFFBB1_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1_rcs-3Acss_0;
+      - dtCookie=v_4_srv_3_sn_AE66748FACC9FA2D8D6E5F89A8D4ABE1_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1;
         Path=/; Domain=.bancobonsucesso.com.br
       Server-Timing:
       - cdn-cache; desc=MISS
-      - 'dtRpid;desc="-1507705448" '
-      - edge; dur=310
-      - origin; dur=60
+      - dtRpid;desc="1158548285"
+      - edge; dur=15
+      - origin; dur=58
       X-Frame-Options:
       - SAMEORIGIN
       X-Content-Type-Options:
@@ -60,8 +58,8 @@ http_interactions:
       - 'max-age=63072000; IncludeSubDomains: preload'
     body:
       encoding: UTF-8
-      string: "{\r\n  \"access_token\":\"ce20270a-09b9-43e2-bdd2-5753db8df2ef\",\r\n
+      string: "{\r\n  \"access_token\":\"dcda04d5-a4ca-4d99-b496-640c3d039c6a\",\r\n
         \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":420,\r\n  \"scope\":\"pix.write
         pix.read\"\r\n}"
-  recorded_at: Tue, 15 Jun 2021 14:07:03 GMT
+  recorded_at: Wed, 16 Jun 2021 14:09:36 GMT
 recorded_with: VCR 6.0.0

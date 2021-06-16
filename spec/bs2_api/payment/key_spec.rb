@@ -4,7 +4,7 @@ RSpec.describe Bs2Api::Payment::Key do
   describe "Success" do
     let!(:pix_key_hash) {
       {
-        "valor": "e9e511e3-b765-4d27-abf9-03b0f9a1f3f1",
+        "valor": ENV['BS2_EVP_TEST_KEY'],
         "tipo": "EVP"
       }
     }
@@ -25,6 +25,27 @@ RSpec.describe Bs2Api::Payment::Key do
       expect(@payment).to respond_to(:merchant_id)
       expect(@payment).to respond_to(:payer)
       expect(@payment).to respond_to(:receiver)
+    end
+  end
+
+  describe "Error" do
+    let!(:invalid_key) {
+      {
+        "valor": "invalid",
+        "tipo": "EVP"
+      }
+    }
+
+    let!(:pix_key) { Bs2Api::Entities::PixKey.from_response(invalid_key) }
+
+    before do
+      set_configuration
+    end
+    
+    it "raise Error" do
+      VCR.use_cassette('payment/key/invalid_key', :preserve_exact_body_bytes => true) do
+        expect { described_class.new(pix_key).call }.to raise_error(Bs2Api::Errors::BadRequest, '400: O formato esperado não foi respeitado.')
+      end
     end
   end
 end

@@ -3,7 +3,6 @@ PATH
   specs:
     bs2_api (0.2.0)
       activesupport (~> 6.1, >= 6.1.3.2)
-      http (~> 4.4)
 
 GEM
   remote: https://rubygems.org/
@@ -22,30 +21,21 @@ GEM
     crack (0.4.5)
       rexml
     diff-lcs (1.4.4)
-    domain_name (0.5.20190701)
-      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.6)
-    ffi (1.15.1)
-    ffi-compiler (1.0.1)
-      ffi (>= 1.0.0)
-      rake
     hashdiff (1.0.1)
-    http (4.4.1)
-      addressable (~> 2.3)
-      http-cookie (~> 1.0)
-      http-form_data (~> 2.2)
-      http-parser (~> 1.2.0)
-    http-cookie (1.0.4)
-      domain_name (~> 0.5)
-    http-form_data (2.3.0)
-    http-parser (1.2.3)
-      ffi-compiler (>= 1.0, < 2.0)
+    httparty (0.18.1)
+      mime-types (~> 3.0)
+      multi_xml (>= 0.5.2)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     macaddr (1.7.2)
       systemu (~> 2.6.5)
     method_source (1.0.0)
+    mime-types (3.3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2021.0225)
     minitest (5.14.4)
+    multi_xml (0.6.0)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -71,9 +61,6 @@ GEM
     systemu (2.6.5)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.7.7)
     uuid (2.3.9)
       macaddr (~> 1.0)
     vcr (6.0.0)
@@ -87,8 +74,10 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activesupport (~> 6.1, >= 6.1.3.2)
   bs2_api!
   dotenv (~> 2.7, >= 2.7.6)
+  httparty (~> 0.18.1)
   pry-byebug (~> 3.9)
   rake (~> 13.0)
   rspec (~> 3.10)

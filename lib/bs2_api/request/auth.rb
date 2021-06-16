@@ -9,22 +9,23 @@ module Bs2Api
 
           response = create_session
 
-          raise Bs2Api::Errors::Unauthorized, response.parse["error_description"] if response.status.unauthorized?
-          raise Bs2Api::Errors::BadRequest, response.parse["error_description"] if response.status.bad_request?
-          raise Bs2Api::Errors::ServerError, response.body.to_s if !response.status.success?
+          raise Bs2Api::Errors::Unauthorized, response["error_description"] if response.unauthorized?
+          raise Bs2Api::Errors::BadRequest, response["error_description"] if response.bad_request?
+          raise Bs2Api::Errors::ServerError, response.body if !response.success?
 
-          response.parse["access_token"]
+          response["access_token"]
         end
 
         private
           def create_session
-            HTTP.basic_auth(
-              user: Bs2Api.configuration.client_id,
-              pass: Bs2Api.configuration.client_secret
-            ).post(
+            HTTParty.post(
               auth_url,
-              body: body, 
-              headers: headers
+              headers: headers,
+              body: body,
+              basic_auth: {
+                username: Bs2Api.configuration.client_id,
+                password: Bs2Api.configuration.client_secret
+              }
             )
           end
 

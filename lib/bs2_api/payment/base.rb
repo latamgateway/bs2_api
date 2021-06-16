@@ -1,27 +1,23 @@
-# frozen_string_literal: true
-
 module Bs2Api
   module Payment
     class Base
       def call
-        response = HTTP.auth("Bearer #{bearer_token}")
-                       .headers(headers)
-                       .post(
-                          url,
-                          json: payload
-                        )
-                        
-        raise Bs2Api::Errors::BadRequest, response.body.to_s if !response.status.created?
-        
-        Bs2Api::Entities::Payment.from_response(response.parse)
+        response = post_request
+
+        raise Bs2Api::Errors::BadRequest, parse_error(response) if !response.created?
+        Bs2Api::Entities::Payment.from_response(response)
       end
 
       private
+        def post_request
+          HTTParty.post(url, headers: headers, body: payload.to_json)
+        end
+
         def headers
           {
             "Content-Type": "application/json",
             "Accept": "application/json",
-            "Accept-Encoding": "gzip,deflate"
+            "Authorization": "Bearer #{bearer_token}"
           }
         end
 
@@ -29,15 +25,26 @@ module Bs2Api
           Bs2Api::Request::Auth.token
         end
 
+        def parse_error(response)
+          hash    = JSON.parse(response.body)
+          message = "#{response.code}: "
+
+          if hash.is_a?(Array)
+            message << hash[0]["descricao"]
+          elsif hash.key?("error_description")
+            message << hash["error_description"]
+          else 
+            message << hash.to_s
+          end
+
+          message
+        end
+
         def payload
-          no_method_error
+          raise NoMethodError, "Missing #{__method__} to #{self.class}"
         end
         
         def url
-          no_method_error
-        end
-        
-        def no_method_error
           raise NoMethodError, "Missing #{__method__} to #{self.class}"
         end
     end

@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 require "bs2_api"
-require "vcr"
-require "dotenv"
-require "pry"
+Bundler.require(:test)
 
 Dotenv.load(".env.test")
 
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
+  config.before_record do |i|
+    i.request.headers.delete('Authorization')
+  end
 end
 
 RSpec.configure do |config|

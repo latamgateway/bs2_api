@@ -7,43 +7,43 @@ http_interactions:
       encoding: UTF-8
       string: grant_type=client_credentials&scope=pix.write%20pix.read
     headers:
-      Authorization:
-      - Basic 123==
-      Connection:
-      - close
-      Host:
-      - apihmz.bancobonsucesso.com.br
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       User-Agent:
-      - http.rb/4.4.1
+      - Ruby
   response:
     status:
       code: 400
-      message: Bad Request
+      message: OK
     headers:
       X-Oneagent-Js-Injection:
       - 'true'
-      X-Ca-Err:
-      - '3003103'
-      Cache-Control:
-      - no-store
       Pragma:
       - no-cache
+      Cache-Control:
+      - no-store
       Content-Type:
       - application/json;charset=UTF-8
-      Content-Length:
-      - '91'
+      Vary:
+      - Accept-Encoding
       Date:
-      - Tue, 15 Jun 2021 14:14:05 GMT
+      - Wed, 16 Jun 2021 14:09:41 GMT
+      Content-Length:
+      - '141'
       Connection:
-      - close
+      - keep-alive
       Set-Cookie:
-      - dtCookie=v_4_srv_2_sn_1427FA170B56E75A3A6AA9725D5ACDEE_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1_rcs-3Acss_0;
+      - dtCookie=v_4_srv_2_sn_D8C6B5E287202FD4A9B8EF5722F704F3_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1;
         Path=/; Domain=.bancobonsucesso.com.br
       Server-Timing:
       - cdn-cache; desc=MISS
-      - 'dtRpid;desc="1516054748" '
-      - edge; dur=23
-      - origin; dur=45
+      - dtRpid;desc="-1474052192"
+      - edge; dur=15
+      - origin; dur=139
       X-Frame-Options:
       - SAMEORIGIN
       X-Content-Type-Options:
@@ -58,7 +58,6 @@ http_interactions:
       - 'max-age=63072000; IncludeSubDomains: preload'
     body:
       encoding: UTF-8
-      string: "{\r\n  \"error\":\"invalid_request\",\r\n  \"error_description\":\"Missing
-        or duplicate parameters\"\r\n}"
-  recorded_at: Tue, 15 Jun 2021 14:14:05 GMT
+      string: "{\r\n  \"error\":\"invalid_client\",\r\n  \"error_description\":\"Missing or duplicate parameters\"\r\n}"
+  recorded_at: Wed, 16 Jun 2021 14:09:41 GMT
 recorded_with: VCR 6.0.0

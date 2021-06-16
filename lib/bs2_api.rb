@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require 'httparty'
+require "active_support/core_ext/hash/indifferent_access"
 
 require 'bs2_api/version'
 require 'bs2_api/configuration'
@@ -26,8 +28,6 @@ require 'bs2_api/payment/manual'
 require 'bs2_api/request/auth'
 
 require 'bs2_api/util/bank_service'
-
-require "active_support/core_ext/hash/indifferent_access"
 
 module Bs2Api
   ENDPOINT = {
