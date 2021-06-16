@@ -1,6 +1,4 @@
-## [Unreleased]
-
-## [0.3.0] - 2021-06-15
+## [0.3.0] - 2021-06-16
 
 - Confirmation, Adjust README.md
 
