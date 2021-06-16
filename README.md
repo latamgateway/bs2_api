@@ -43,9 +43,9 @@ ou via initializer:
 
 ```ruby
 Bs2Api.configure do |config|
-  config.client_id       = 'you_bs2_client_id'
-  config.client_secret   = 'you_bs2_client_secret'
-  config.pix_environment = 'sandbox' # ou production
+  config.client_id     = 'you_bs2_client_id'
+  config.client_secret = 'you_bs2_client_secret'
+  config.env           = 'sandbox' # ou production
 end
 ```
 
@@ -107,7 +107,7 @@ pay_manual.payment.merchantId
 
 # Tanto a ordem de transferência via chave ou manual tem o mesmo payment.
 # Caso tenha criado via chave no passo anterior:
-payment = pay_key.payment 
+payment = pay_key.payment
 
 # Ou caso tenha criado a ordem via Manual no passo anterior:
 payment = pay_manual.payment
