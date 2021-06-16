@@ -2,6 +2,18 @@
 
 Integração com a API do Banco BS2: https://devs.bs2.com/manual/pix-clientes
 
+TO-DO:
+- Pagamentos (**Transfere** dinheiro para alguém)
+  - [x] Criar pagamento por Chave
+  - [x] Criar pagamento Manual
+  - [x] Confirmar pagamento
+  - [ ] Consultar pagamento
+- Recebimentos (**Recebe** dinheiro de alguém)
+  - [ ] Cobrança estático
+  - [ ] Cobrança dinâmico
+  - [ ] Consultar cobrança
+
+
 ## Instalação
 
 Adicionar no seu Gemfile:
@@ -33,11 +45,11 @@ ou via initializer:
 Bs2Api.configure do |config|
   config.client_id       = 'you_bs2_client_id'
   config.client_secret   = 'you_bs2_client_secret'
-  config.pix_environment = 'pix_enviroment'
+  config.pix_environment = 'sandbox' # ou production
 end
 ```
 
-### Iniciar pagamento por Chave
+### Inicia ordem de Transferência PIX via: Chave
 
 ```ruby
 pix_key = Bs2Api::Entities::PixKey.new(
@@ -45,100 +57,86 @@ pix_key = Bs2Api::Entities::PixKey.new(
   type: 'EMAIL'
 )
 
-payment = Bs2Api::Payment::Key.new(pix_key).call
+# Caso ocorra algum problema na criação, um erro será lançado
+# Veja abaixo (Classes de errors) quais erros que podem ser lançados
+pay_key = Bs2Api::Payment::Key.new(pix_key).call
+
+pay_key.payment.id
+=> "96f0b3c4-4c76-4a7a-9933-9c9f86df7490" # pagamentoId gerado no BS2
+
+pay_key.payment.merchantId
+=> "E710278662021061618144401750781P" # endToEndId gerado no BS2
+
 ```
 
-Tipos:
-```bash
-CPF
-CNPJ
-PHONE
-EMAIL
-EVP (Chave aleatória)
-```
-
-
-### Iniciar pagamento Manual
+### Inicia ordem de Transferência PIX via: Manual
 
 ```ruby
 account = Bs2Api::Entities::Account.new(
-  bank_code: '341',
-  bank_name: 'Itaú',
-  agency: '0944',
-  number: '09442-1',
-  type: 'ContaCorrente'
+  bank_code: "218",
+  agency: "0993",
+  number: "042312",
+  type: "ContaCorrente" # ContaCorrente, ContaSalario ou Poupanca
 )
 
 customer = Bs2Api::Entities::Customer.new(
-  document: '88899988811',
-  type: 'CPF',
-  name: 'João Silva'
+  document: "88899988811",
+  type: "CPF",
+  name: "Rick Sanches",
+  business_name: "Nome fantasia" # Utilizar apenas se for type CNPJ
 )
 
-receiver = Bs2Api::Entities::Bank.new(
-  account: account, 
+receiver_bank = Bs2Api::Entities::Bank.new(
+  account: account,
   customer: customer
 )
 
-payment = Bs2Api::Payment::Manual.new(receiver).call
+pay_manual = Bs2Api::Payment::Manual.new(receiver_bank).call
+
+pay_manual.payment.id
+=> "96f0b3c4-4c76-4a7a-9933-9c9f86df7490" # UUID gerado no BS2
+
+pay_manual.payment.merchantId
+=> "E710278662021061618144401750781P" # endToEndId gerado no BS2
 ```
 
-### Objetos
-
-##### Payment
+### Confirmar ordem de transferência
 ```ruby
-payment.id # pagamentoId
-payment.merchant_id # endToEndId
-payment.receiver # recebedor
-payment.payer # pagador
+# Após criar um Payment é necessário confirmar
+# Nessa etapa o dinheiro é de fato transferido
 
-payment.receiver.class
-=> Bs2Api::Entities::Bank
+# Tanto a ordem de transferência via chave ou manual tem o mesmo payment.
+# Caso tenha criado via chave no passo anterior:
+payment = pay_key.payment 
 
-payment.payer.class
-=> Bs2Api::Entities::Bank
+# Ou caso tenha criado a ordem via Manual no passo anterior:
+payment = pay_manual.payment
 
-payment.payer.account # conta
-=> Bs2Api::Entities::Account
+amount = 10.50
+confirmation = Bs2Api::Payment::Confirmation.new(payment, value: amount).call
 
-payment.payer.customer # pessoa
-=> Bs2Api::Entities::Customer
+# Caso a confirmação de problema, um erro será lançado.
+raise Bs2Api::Errors::ConfirmationError
 
-payment.to_hash
-{
-  "pagamentoId"=>"123", 
-  "endToEndId"=>"456", 
-  "recebedor"=>{
-    "ispb"=>"71027866", 
-    "conta"=>{
-      "banco"=>"218", 
-      "bancoNome"=>"BCO BS2 S.A.", 
-      "agencia"=>"0001", 
-      "numero"=>"3134806", 
-      "tipo"=>"ContaCorrente"
-    },
-    "pessoa"=>{
-      "documento"=>"25215188000116", 
-      "tipoDocumento"=>"CNPJ", 
-      "nome"=>"Teste Automatizado", 
-      "nomeFantasia"=>nil
-    }
-  }, 
-  "pagador"=>{
-    "ispb"=>"71027866", 
-    "conta"=>{
-      "banco"=>"218", 
-      "bancoNome"=>"BCO BS2 S.A.", 
-      "agencia"=>"0001", 
-      "numero"=>"3134806", 
-      "tipo"=>"ContaCorrente"
-    },
-    "pessoa"=>{
-      "documento"=>"25215188000116", 
-      "tipoDocumento"=>"CNPJ", 
-      "nome"=>"Teste Automatizado", 
-      "nomeFantasia"=>nil
-    }
-  }
-}
+# Caso nenhum erro seja lançado (já é sucesso) porém, você pode ter certeza com
+confirmation.success?
+```
+---
+### Classes de erros:
+```ruby
+# Todos erros herdam de:
+Bs2Api::Errors::Base
+
+Bs2Api::Errors::BadRequest
+Bs2Api::Errors::ConfirmationError
+Bs2Api::Errors::InvalidCustomer
+Bs2Api::Errors::InvalidPixKey
+Bs2Api::Errors::MissingConfiguration
+Bs2Api::Errors::ServerError
+Bs2Api::Errors::Unauthorized
+
+# Caso não queira tratar um erro em específico basta fazer rescue do Base
+rescue Bs2Api::Errors::Base => e
+  puts "Erro: #{e.message}"
+end
 ```

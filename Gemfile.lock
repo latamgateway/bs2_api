@@ -1,8 +1,12 @@
 PATH
   remote: .
   specs:
-    bs2_api (0.2.0)
-      activesupport (~> 6.1, >= 6.1.3.2)
+    bs2_api (0.3.0)
+      activesupport
+      builder
+      bundler
+      httparty (~> 0.18.1)
+      rake
 
 GEM
   remote: https://rubygems.org/
@@ -15,6 +19,7 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    builder (3.2.4)
     byebug (11.1.3)
     coderay (1.1.3)
     concurrent-ruby (1.1.9)
@@ -74,12 +79,9 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activesupport (~> 6.1, >= 6.1.3.2)
   bs2_api!
   dotenv (~> 2.7, >= 2.7.6)
-  httparty (~> 0.18.1)
   pry-byebug (~> 3.9)
-  rake (~> 13.0)
   rspec (~> 3.10)
   uuid (~> 2.3, >= 2.3.9)
   vcr (~> 6.0)

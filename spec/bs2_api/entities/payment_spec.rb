@@ -38,7 +38,7 @@ RSpec.describe Bs2Api::Entities::Payment do
         }
       }
 
-      let(:bank_response) {
+      let!(:bank_response) {
         {
           "ispb": "123",
           "conta": account_response,

@@ -4,6 +4,7 @@ module Bs2Api
   module Payment
     class Manual < Base
       def initialize bank
+        raise Bs2Api::Errors::InvalidBank, 'Invalid Bank' unless bank.is_a?(Bs2Api::Entities::Bank)
         @bank = bank
       end
 

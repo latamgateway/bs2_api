@@ -1,0 +1,248 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://apihmz.bancobonsucesso.com.br/auth/oauth/v2/token
+    body:
+      encoding: UTF-8
+      string: "<FILTERED>"
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Authorization: "<FILTERED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Oneagent-Js-Injection:
+      - 'true'
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-store
+      Content-Type:
+      - application/json;charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Wed, 16 Jun 2021 18:45:25 GMT
+      Content-Length:
+      - '141'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - dtCookie=v_4_srv_6_sn_3CA33BE53C502F145B354DC7A6BCD1A9_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1_rcs-3Acss_0;
+        Path=/; Domain=.bancobonsucesso.com.br
+      Server-Timing:
+      - cdn-cache; desc=MISS
+      - dtRpid;desc="514514058"
+      - edge; dur=98
+      - origin; dur=89
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Reffer-Policy:
+      - no-reffer; strict-origin-when-cross-origin
+      Access-Control-Allow-Origin:
+      - bancobonsucesso.com.br
+      Strict-Transport-Security:
+      - 'max-age=63072000; IncludeSubDomains: preload'
+    body:
+      encoding: UTF-8
+      string: "{\r\n  \"access_token\":\"18d4b3ef-102b-439f-a12d-790dd9bdd293\",\r\n
+        \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":420,\r\n  \"scope\":\"pix.write
+        pix.read\"\r\n}"
+  recorded_at: Wed, 16 Jun 2021 18:45:25 GMT
+- request:
+    method: post
+    uri: https://apihmz.bancobonsucesso.com.br/pix/direto/forintegration/v1/pagamentos/chave
+    body:
+      encoding: UTF-8
+      string: "<FILTERED>"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Authorization: "<FILTERED>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Oneagent-Js-Injection:
+      - 'true'
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '302'
+      Date:
+      - Wed, 16 Jun 2021 18:45:26 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - dtCookie=v_4_srv_6_sn_1FAEAE43A041EB6D2E34F887559DA8C7_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1_rcs-3Acss_0;
+        Path=/; Domain=.bancobonsucesso.com.br
+      - dtCookie=v_4_srv_6_sn_96F82DA982C8D41698A1019D0969FBA6_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1_rcs-3Acss_0;
+        Path=/; Domain=.bancobonsucesso.com.br
+      Server-Timing:
+      - cdn-cache; desc=MISS
+      - dtRpid;desc="-436992762"
+      - edge; dur=19
+      - origin; dur=1200
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache; no-store; max-age=0; must-revalidate
+      Reffer-Policy:
+      - no-reffer; strict-origin-when-cross-origin
+      Access-Control-Allow-Origin:
+      - bancobonsucesso.com.br
+      Strict-Transport-Security:
+      - 'max-age=63072000; IncludeSubDomains: preload'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"pagamentoId":"2fded89a-6b7b-4536-9a50-9cfe45963791","endToEndId":"E710278662021061618452650099655P","recebedor":{"ispb":"71027866","conta":{"banco":"218","bancoNome":"BCO
+        BS2 S.A.","agencia":"0001","numero":"3134806","tipo":"ContaCorrente"},"pessoa":{"documento":"25215188000116","tipoDocumento":"CNPJ","nome":"Teste
+        Automatizado","nomeFantasia":null}},"pagador":{"ispb":"71027866","conta":{"banco":"218","bancoNome":"BCO
+        BS2 S.A.","agencia":"0001","numero":"3135772","tipo":"ContaCorrente"},"pessoa":{"documento":"25215188000116","tipoDocumento":"CNPJ","nome":"Teste Automatizado","nomeFantasia":null}}}'
+  recorded_at: Wed, 16 Jun 2021 18:45:26 GMT
+- request:
+    method: post
+    uri: https://apihmz.bancobonsucesso.com.br/auth/oauth/v2/token
+    body:
+      encoding: UTF-8
+      string: "<FILTERED>"
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Authorization: "<FILTERED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Oneagent-Js-Injection:
+      - 'true'
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-store
+      Content-Type:
+      - application/json;charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Wed, 16 Jun 2021 18:45:27 GMT
+      Content-Length:
+      - '141'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - dtCookie=v_4_srv_2_sn_F938EC919BE874D1618C4E7416A01374_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1_rcs-3Acss_0;
+        Path=/; Domain=.bancobonsucesso.com.br
+      Server-Timing:
+      - cdn-cache; desc=MISS
+      - dtRpid;desc="-2010421667"
+      - edge; dur=18
+      - origin; dur=56
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Reffer-Policy:
+      - no-reffer; strict-origin-when-cross-origin
+      Access-Control-Allow-Origin:
+      - bancobonsucesso.com.br
+      Strict-Transport-Security:
+      - 'max-age=63072000; IncludeSubDomains: preload'
+    body:
+      encoding: UTF-8
+      string: "{\r\n  \"access_token\":\"d4cdb259-3316-474e-a0a5-c3ef35d79d0c\",\r\n
+        \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":420,\r\n  \"scope\":\"pix.write
+        pix.read\"\r\n}"
+  recorded_at: Wed, 16 Jun 2021 18:45:27 GMT
+- request:
+    method: post
+    uri: https://apihmz.bancobonsucesso.com.br/pix/direto/forintegration/v1/pagamentos/2fded89a-6b7b-4536-9a50-9cfe45963791/confirmacao
+    body:
+      encoding: UTF-8
+      string: "<FILTERED>"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Authorization: "<FILTERED>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      X-Oneagent-Js-Injection:
+      - 'true'
+      Content-Length:
+      - '20'
+      Date:
+      - Wed, 16 Jun 2021 18:45:30 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - dtCookie=v_4_srv_3_sn_701BD1DE6558B9F5E8C504516517B04A_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1_rcs-3Acss_0;
+        Path=/; Domain=.bancobonsucesso.com.br
+      - dtCookie=v_4_srv_3_sn_70F36DDCFF895F30CF375F81A6182519_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1_rcs-3Acss_1;
+        Path=/; Domain=.bancobonsucesso.com.br
+      Server-Timing:
+      - cdn-cache; desc=MISS
+      - dtRpid;desc="-181743919"
+      - edge; dur=20
+      - origin; dur=3055
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache; no-store; max-age=0; must-revalidate
+      Reffer-Policy:
+      - no-reffer; strict-origin-when-cross-origin
+      Access-Control-Allow-Origin:
+      - bancobonsucesso.com.br
+      Strict-Transport-Security:
+      - 'max-age=63072000; IncludeSubDomains: preload'
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+  recorded_at: Wed, 16 Jun 2021 18:45:30 GMT
+recorded_with: VCR 6.0.0

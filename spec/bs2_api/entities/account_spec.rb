@@ -4,8 +4,8 @@ RSpec.describe Bs2Api::Entities::Account do
   describe "Object" do
     let(:hash_response) {
       {
-        "banco": "123",
-        "bancoNome": "Itaú",
+        "banco": "218",
+        "bancoNome": "Banco BONSUCESSO",
         "agencia": "456",
         "numero": "334",
         "tipo": "ContaCorrente"
@@ -22,7 +22,7 @@ RSpec.describe Bs2Api::Entities::Account do
       end
 
       it "attr_accessor" do
-        account = described_class.new
+        account = described_class.new(bank_code: "218")
 
         expect(account).to respond_to(:bank_code)
         expect(account).to respond_to(:bank_name)
@@ -41,8 +41,7 @@ RSpec.describe Bs2Api::Entities::Account do
     context "methods" do
       before do
         @account = described_class.new(
-          bank_code: '123',
-          bank_name: 'Itaú',
+          bank_code: '218',
           agency: '456',
           number: '334',
           type: 'Poupanca'
@@ -50,8 +49,8 @@ RSpec.describe Bs2Api::Entities::Account do
       end
 
       it "attributes matches" do
-        expect(@account.bank_code).to eq('123')
-        expect(@account.bank_name).to eq('Itaú')
+        expect(@account.bank_code).to eq('218')
+        expect(@account.bank_name).to eq('Banco BONSUCESSO')
         expect(@account.agency).to eq('456')
         expect(@account.number).to eq('334')
         expect(@account.type).to eq('Poupanca')
@@ -84,8 +83,8 @@ RSpec.describe Bs2Api::Entities::Account do
 
         expect(account).to be_a(Bs2Api::Entities::Account)
         
-        expect(account.bank_code).to eq('123')
-        expect(account.bank_name).to eq('Itaú')
+        expect(account.bank_code).to eq('218')
+        expect(account.bank_name).to eq('Banco BONSUCESSO')
         expect(account.agency).to eq('456')
         expect(account.number).to eq('334')
         expect(account.type).to eq('ContaCorrente')
@@ -93,41 +92,3 @@ RSpec.describe Bs2Api::Entities::Account do
     end
   end
 end
-
-
-# {
-#   "pagamentoId": "aa631510-911c-47f1-9f3c-aa4c8014ec41",
-#   "endToEndId": "E710278662021061120005358017675P",
-#   "recebedor": {
-#     "ispb": "71027866",
-#     "conta": {
-#       "banco": "218",
-#       "bancoNome": "BCO BS2 S.A.",
-#       "agencia": "0001",
-#       "numero": "3134806",
-#       "tipo": "ContaCorrente"
-#     },
-#     "pessoa": {
-#       "documento": "25215188000116",
-#       "tipoDocumento": "CNPJ",
-#       "nome": "Teste Automatizado",
-#       "nomeFantasia": null
-#     }
-#   },
-#   "pagador": {
-#     "ispb": "71027866",
-#     "conta": {
-#       "banco": "218",
-#       "bancoNome": "BCO BS2 S.A.",
-#       "agencia": "0001",
-#       "numero": "3135772",
-#       "tipo": "ContaCorrente"
-#     },
-#     "pessoa": {
-#       "documento": "19183907000161",
-#       "tipoDocumento": "CNPJ",
-#       "nome": "latampix2_api",
-#       "nomeFantasia": null
-#     }
-#   }
-# }

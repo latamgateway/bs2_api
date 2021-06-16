@@ -15,16 +15,16 @@ RSpec.describe Bs2Api::Payment::Key do
       set_configuration
 
       VCR.use_cassette('payment/key/success') do
-        @payment = described_class.new(pix_key).call
+        @key_payment = described_class.new(pix_key).call
       end
     end
 
     it "payment was created" do
-      expect(@payment).to be_a(Bs2Api::Entities::Payment)
-      expect(@payment).to respond_to(:id)
-      expect(@payment).to respond_to(:merchant_id)
-      expect(@payment).to respond_to(:payer)
-      expect(@payment).to respond_to(:receiver)
+      expect(@key_payment.payment).to be_a(Bs2Api::Entities::Payment)
+      expect(@key_payment.payment).to respond_to(:id)
+      expect(@key_payment.payment).to respond_to(:merchant_id)
+      expect(@key_payment.payment).to respond_to(:payer)
+      expect(@key_payment.payment).to respond_to(:receiver)
     end
   end
 

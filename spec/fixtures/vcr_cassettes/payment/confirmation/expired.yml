@@ -31,18 +31,18 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Date:
-      - Wed, 16 Jun 2021 14:33:38 GMT
+      - Wed, 16 Jun 2021 17:35:48 GMT
       Content-Length:
       - '141'
       Connection:
       - keep-alive
       Set-Cookie:
-      - dtCookie=v_4_srv_5_sn_43F1C8A92FE644BBEDA3ED656EE3A6F8_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1;
+      - dtCookie=v_4_srv_1_sn_0E5546124EB35DE0C0E06D300CA8536E_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1_rcs-3Acss_0;
         Path=/; Domain=.bancobonsucesso.com.br
       Server-Timing:
       - cdn-cache; desc=MISS
-      - dtRpid;desc="-1111480624"
-      - edge; dur=20
+      - dtRpid;desc="-1211180170"
+      - edge; dur=169
       - origin; dur=60
       X-Frame-Options:
       - SAMEORIGIN
@@ -58,16 +58,20 @@ http_interactions:
       - 'max-age=63072000; IncludeSubDomains: preload'
     body:
       encoding: UTF-8
-      string: "{\r\n  \"access_token\":\"f3f83860-94e7-495c-aff4-24876eaa5348\",\r\n
+      string: "{\r\n  \"access_token\":\"91c8f80a-09f2-4156-beb6-cf6bec45c276\",\r\n
         \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":420,\r\n  \"scope\":\"pix.write
         pix.read\"\r\n}"
-  recorded_at: Wed, 16 Jun 2021 14:33:38 GMT
+  recorded_at: Wed, 16 Jun 2021 17:35:48 GMT
 - request:
     method: post
-    uri: https://apihmz.bancobonsucesso.com.br/pix/direto/forintegration/v1/pagamentos/chave
+    uri: https://apihmz.bancobonsucesso.com.br/pix/direto/forintegration/v1/pagamentos/dce166b9-fc9d-48dd-8e9f-84403a5b3ca4/confirmacao
     body:
       encoding: UTF-8
-      string: '{"chave":{"valor":"<BS2_EVP_TEST_KEY>","tipo":"EVP"}}'
+      string: '{"recebedor":{"ispb":"71027866","conta":{"banco":"218","bancoNome":"BCO
+        BS2 S.A.","agencia":"0001","numero":"3134806","tipo":"ContaCorrente"},"pessoa":{"documento":"71027866000134","tipoDocumento":"CNPJ","nome":"Teste
+        Automatizado","nomeFantasia":null}},"pagador":{"ispb":"71027866","conta":{"banco":"218","bancoNome":"BCO
+        BS2 S.A.","agencia":"0001","numero":"3134806","tipo":"ContaCorrente"},"pessoa":{"documento":"71027866000134","tipoDocumento":"CNPJ","nome":"Teste
+        Automatizado","nomeFantasia":null}},"valor":20.0}'
     headers:
       Content-Type:
       - application/json
@@ -79,29 +83,29 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 201
-      message: Created
+      code: 400
+      message: Bad Request
     headers:
       X-Oneagent-Js-Injection:
       - 'true'
       Content-Type:
       - application/json;charset=utf-8
       Content-Length:
-      - '304'
+      - '131'
       Date:
-      - Wed, 16 Jun 2021 14:33:39 GMT
+      - Wed, 16 Jun 2021 17:35:49 GMT
       Connection:
-      - keep-alive
+      - close
       Set-Cookie:
-      - dtCookie=v_4_srv_6_sn_75ED92E3CEB14C01537F7C80DF9ACBB9_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1;
+      - dtCookie=v_4_srv_4_sn_2CD7F1256A7A99F0BACE38157618B6BB_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1_rcs-3Acss_0;
         Path=/; Domain=.bancobonsucesso.com.br
-      - dtCookie=v_4_srv_6_sn_CBC0B5BE5CD9BEB01EFEE0E5ADF82A82_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1;
+      - dtCookie=v_4_srv_4_sn_C856DCEAD4917B2CA79B75D1C311F7F3_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1_rcs-3Acss_0;
         Path=/; Domain=.bancobonsucesso.com.br
       Server-Timing:
       - cdn-cache; desc=MISS
-      - dtRpid;desc="-486286984"
+      - dtRpid;desc="-630973811"
       - edge; dur=21
-      - origin; dur=999
+      - origin; dur=909
       X-Frame-Options:
       - SAMEORIGIN
       X-Content-Type-Options:
@@ -118,11 +122,7 @@ http_interactions:
       - 'max-age=63072000; IncludeSubDomains: preload'
     body:
       encoding: ASCII-8BIT
-      string: '{"pagamentoId":"dce166b9-fc9d-48dd-8e9f-84403a5b3ca4","endToEndId":"E710278662021061614333886951710P","recebedor":{"ispb":"71027866","conta":{"banco":"218","bancoNome":"BCO
-        BS2 S.A.","agencia":"0001","numero":"3134806","tipo":"ContaCorrente"},"pessoa":{"documento":"71027866000134","tipoDocumento":"CNPJ","nome":"Teste
-        Automatizado","nomeFantasia":null}},"pagador":{"ispb":"71027866","conta":{"banco":"218","bancoNome":"BCO
-        BS2 S.A.","agencia":"0001","numero":"3135772","tipo":"ContaCorrente"},"pessoa":{"documento":"71027866000134","tipoDocumento":"CNPJ","nome":"Teste Automatizado","nomeFantasia":null}}}'
-  recorded_at: Wed, 16 Jun 2021 14:33:39 GMT
+      string: !binary |-
+        W3siZGVzY3JpY2FvIjoiUGFnYW1lbnRvIG7Do28gZXN0w6EgZGlzcG9uw612ZWwgcGFyYSBjb25maXJtYcOnw6NvLiBTdGF0dXMgYXR1YWw6IEVYUElSQURPIiwidGFnIjoiYnMyLXBpeC1jb25maXJtYWNhbyJ9XQ==
+  recorded_at: Wed, 16 Jun 2021 17:35:49 GMT
 recorded_with: VCR 6.0.0
-
-

@@ -1,11 +1,18 @@
 module Bs2Api
   module Payment
     class Base
+      attr_reader :payment
+
+      def initialize
+        raise NoMethodError, "Missing #{__method__} to #{self.class}"
+      end
+
       def call
         response = post_request
-
-        raise Bs2Api::Errors::BadRequest, parse_error(response) if !response.created?
-        Bs2Api::Entities::Payment.from_response(response)
+        raise Bs2Api::Errors::BadRequest, parse_error(response) unless response.created?
+        
+        @payment = Bs2Api::Entities::Payment.from_response(response)
+        self
       end
 
       private

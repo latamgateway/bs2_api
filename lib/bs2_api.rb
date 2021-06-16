@@ -1,6 +1,7 @@
 # frozen_string_literal: true
-require 'httparty'
+require "httparty"
 require "active_support/core_ext/hash/indifferent_access"
+require "active_support/core_ext/hash/except"
 
 require 'bs2_api/version'
 require 'bs2_api/configuration'
@@ -10,10 +11,14 @@ require 'bs2_api/initializers/hash'
 
 require 'bs2_api/errors/base'
 require 'bs2_api/errors/invalid_pix_key'
+require 'bs2_api/errors/invalid_bank'
+require 'bs2_api/errors/invalid_customer'
 require 'bs2_api/errors/missing_configuration'
 require 'bs2_api/errors/unauthorized'
 require 'bs2_api/errors/bad_request'
 require 'bs2_api/errors/server_error'
+require 'bs2_api/errors/confirmation_error'
+require 'bs2_api/errors/missing_bank'
 
 require 'bs2_api/entities/account'
 require 'bs2_api/entities/bank'
@@ -24,6 +29,7 @@ require 'bs2_api/entities/pix_key'
 require 'bs2_api/payment/base'
 require 'bs2_api/payment/key'
 require 'bs2_api/payment/manual'
+require 'bs2_api/payment/confirmation'
 
 require 'bs2_api/request/auth'
 

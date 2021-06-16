@@ -13,17 +13,17 @@ module Bs2Api
 
       def initialize(args = {})
         @bank_code  = args.fetch(:bank_code, nil)
-        @bank_name  = args.fetch(:bank_name, nil)
         @agency     = args.fetch(:agency, nil)
         @number     = args.fetch(:number, nil)
         @type       = args.fetch(:type, nil)
+        @bank_name  = get_bank_name
       end
 
       def to_hash
         ActiveSupport::HashWithIndifferentAccess.new(
           {
             "banco": @bank_code,
-            "bancoNome": bank_name,
+            "bancoNome": get_bank_name,
             "agencia": @agency,
             "numero": @number,
             "tipo": @type
@@ -54,6 +54,11 @@ module Bs2Api
       def saving?
         @type == TYPES[:saving]
       end
+
+      private
+        def get_bank_name
+          Bs2Api::Util::BankService.find_by_code(@bank_code)["name"]
+        end
     end
   end
 end

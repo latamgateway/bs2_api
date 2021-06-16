@@ -1,15 +1,20 @@
 # frozen_string_literal: true
 
 require "bs2_api"
-Bundler.require(:test)
+require "dotenv"
+require "webmock"
+require "vcr"
+require "pry"
 
 Dotenv.load(".env.test")
 
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
+
   config.before_record do |i|
-    i.request.headers.delete('Authorization')
+    i.request.headers["Authorization"] = '<FILTERED>'
+    i.request.body = '<FILTERED>'
   end
 end
 
