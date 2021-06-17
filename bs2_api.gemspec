@@ -13,6 +13,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/latamgateway/bs2_api"
   spec.required_ruby_version = "~> 2.7", "< 3"
 
+  spec.license = "MIT"
+
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/latamgateway/bs2_api"
   spec.metadata["changelog_uri"] = "https://github.com/latamgateway/bs2_api/blob/main/CHANGELOG.md"
