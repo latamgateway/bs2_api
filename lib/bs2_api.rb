@@ -33,6 +33,7 @@ require 'bs2_api/payment/confirmation'
 require 'bs2_api/request/auth'
 
 require 'bs2_api/util/bank_service'
+require 'bs2_api/util/response'
 
 module Bs2Api
   ENDPOINT = {

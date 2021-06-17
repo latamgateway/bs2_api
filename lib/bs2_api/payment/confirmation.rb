@@ -19,6 +19,10 @@ module Bs2Api
         self
       end
 
+      def success?
+        !!@success
+      end
+
       private
         def payload
           @payment.to_hash
@@ -28,10 +32,6 @@ module Bs2Api
         
         def url
           "#{Bs2Api.endpoint}/pix/direto/forintegration/v1/pagamentos/#{@payment.id}/confirmacao"
-        end
-
-        def success?
-          !!@success
         end
     end
   end

@@ -11,5 +11,7 @@ class Configuration
 
   def valid?
     raise Bs2Api::Errors::MissingConfiguration, 'Missing configuration credentials' if @client_id.blank? || @client_secret.blank?
+
+    true
   end
 end
