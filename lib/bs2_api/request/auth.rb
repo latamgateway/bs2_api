@@ -40,7 +40,7 @@ module Bs2Api
             {
               grant_type: "client_credentials",
               scope: "pix.write%20pix.read"
-            }.to_query
+            }.queryfy
           end
 
           def auth_url
