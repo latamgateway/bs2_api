@@ -106,32 +106,33 @@ pay_manual.payment.merchantId
 ```
 
 ### Confirmar ordem de transferência
+Após criar um Payment é necessário confirmar, nessa etapa o dinheiro é de fato transferido.
+Nessa etapa é necessário **informar o valor** que deseja ser transferido.
+
 ```ruby
-# Após criar um Payment é necessário confirmar
-# Nessa etapa o dinheiro é de fato transferido
 
-# Tanto a ordem de transferência via chave ou manual tem o mesmo payment.
-# Caso tenha criado via chave no passo anterior:
+# Ambos modelos de criação da ordem de pagamento possuem o mesmo objeto payment
+# podendo ser utilizado da mesma forma nos dois casos:
+# pay_key.payment ou pay_manual.payment
+
 payment = pay_key.payment
-
-# Ou caso tenha criado a ordem via Manual no passo anterior:
-payment = pay_manual.payment
-
 amount = 10.50
+
 confirmation = Bs2Api::Payment::Confirmation.new(payment, value: amount).call
 
-# Caso a confirmação de problema, um erro será lançado.
+# Caso a confirmação dê problema, um erro será lançado.
 raise Bs2Api::Errors::ConfirmationError
 
-# Caso nenhum erro seja lançado (já é sucesso) porém, você pode ter certeza com
+# Caso nenhum erro seja lançado significa que foi sucesso. Você pode ter certeza com
 confirmation.success?
 ```
----
+
 ### Classes de erros:
 ```ruby
 # Todos erros herdam de:
 Bs2Api::Errors::Base
 
+# Errors possíveis de serem lançados
 Bs2Api::Errors::BadRequest
 Bs2Api::Errors::ConfirmationError
 Bs2Api::Errors::InvalidCustomer
@@ -139,9 +140,10 @@ Bs2Api::Errors::InvalidPixKey
 Bs2Api::Errors::MissingConfiguration
 Bs2Api::Errors::ServerError
 Bs2Api::Errors::Unauthorized
-
-# Caso não queira tratar um erro em específico basta fazer rescue do Base
-rescue Bs2Api::Errors::Base => e
-  puts "Erro: #{e.message}"
-end
 ```
+
+---
+
+### Observações
+- Método `call` retorna o próprio objeto
+- Em caso de retorno diferente de sucesso na comunicação com a API do Bs2, um erro sempre será lançado.
