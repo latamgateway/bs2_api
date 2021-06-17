@@ -6,13 +6,13 @@ RSpec.describe Bs2Api::Entities::Payment do
       it "attr_accessor" do
         payment = described_class.new
 
-        expect(payment).to respond_to(:id)
-        expect(payment).to respond_to(:merchant_id)
+        expect(payment).to respond_to(:payment_id)
+        expect(payment).to respond_to(:end_to_end_id)
         expect(payment).to respond_to(:receiver)
         expect(payment).to respond_to(:payer)
 
-        expect(payment).to respond_to(:'id=')
-        expect(payment).to respond_to(:'merchant_id=')
+        expect(payment).to respond_to(:'payment_id=')
+        expect(payment).to respond_to(:'end_to_end_id=')
         expect(payment).to respond_to(:'receiver=')
         expect(payment).to respond_to(:'payer=')
       end
@@ -60,16 +60,16 @@ RSpec.describe Bs2Api::Entities::Payment do
 
       before do
         @payment = described_class.new(
-          id: "123",
-          merchant_id: "456",
+          payment_id: "123",
+          end_to_end_id: "456",
           receiver: receiver,
           payer: payer
         )
       end
 
       it "attributes matches" do
-        expect(@payment.id).to eq("123")
-        expect(@payment.merchant_id).to eq("456")
+        expect(@payment.payment_id).to eq("123")
+        expect(@payment.end_to_end_id).to eq("456")
         expect(@payment.receiver).to be_a(Bs2Api::Entities::Bank)
         expect(@payment.payer).to be_a(Bs2Api::Entities::Bank)
       end
@@ -87,8 +87,8 @@ RSpec.describe Bs2Api::Entities::Payment do
         payment = described_class.from_response(hash_response)
 
         expect(payment).to be_a(Bs2Api::Entities::Payment)
-        expect(payment.id).to eq(hash_response[:pagamentoId])
-        expect(payment.merchant_id).to eq(hash_response[:endToEndId])
+        expect(payment.payment_id).to eq(hash_response[:pagamentoId])
+        expect(payment.end_to_end_id).to eq(hash_response[:endToEndId])
         expect(payment.receiver).to be_a(Bs2Api::Entities::Bank)
         expect(payment.payer).to be_a(Bs2Api::Entities::Bank)
       end

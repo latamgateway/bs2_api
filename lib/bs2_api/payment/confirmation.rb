@@ -31,7 +31,7 @@ module Bs2Api
         end
         
         def url
-          "#{Bs2Api.endpoint}/pix/direto/forintegration/v1/pagamentos/#{@payment.id}/confirmacao"
+          "#{Bs2Api.endpoint}/pix/direto/forintegration/v1/pagamentos/#{@payment.payment_id}/confirmacao"
         end
     end
   end

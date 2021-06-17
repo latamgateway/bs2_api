@@ -1,3 +1,7 @@
+## [1.0.0] - 2021-06-18
+- Changed payment.id to payment.payment_id
+- Changed payment.merchant_id to payment.end_to_end_id
+
 ## [0.4.0] - 2021-06-17
 - Configuration#valid? missing return true
 - Created Util::Response.parse_error
