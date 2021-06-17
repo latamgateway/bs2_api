@@ -2,12 +2,11 @@
 require "httparty"
 require "active_support/core_ext/hash/indifferent_access"
 require "active_support/core_ext/hash/except"
+require "active_support/core_ext/object/to_query"
+require "active_support/core_ext/object/blank"
 
 require 'bs2_api/version'
 require 'bs2_api/configuration'
-
-require 'bs2_api/initializers/object'
-require 'bs2_api/initializers/hash'
 
 require 'bs2_api/errors/base'
 require 'bs2_api/errors/invalid_pix_key'
