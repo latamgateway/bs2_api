@@ -20,9 +20,8 @@ jobs:
     
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-          ruby-version: ${{ matrix.ruby-version }}
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true
     - name: Install dependencies
       run: bundle install
     - name: Run tests
