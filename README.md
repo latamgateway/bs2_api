@@ -69,7 +69,7 @@ pay_key = Bs2Api::Payment::Key.new(pix_key).call
 pay_key.payment.id
 => "96f0b3c4-4c76-4a7a-9933-9c9f86df7490" # pagamentoId gerado no BS2
 
-pay_key.payment.merchantId
+pay_key.payment.merchant_id
 => "E710278662021061618144401750781P" # endToEndId gerado no BS2
 
 ```
