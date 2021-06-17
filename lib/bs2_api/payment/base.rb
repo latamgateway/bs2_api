@@ -9,7 +9,7 @@ module Bs2Api
 
       def call
         response = post_request
-        raise Bs2Api::Errors::BadRequest, Util::Response.parse_error(response) unless response.created?
+        raise Bs2Api::Errors::BadRequest, ::Util::Response.parse_error(response) unless response.created?
         
         @payment = Bs2Api::Entities::Payment.from_response(response)
         self
