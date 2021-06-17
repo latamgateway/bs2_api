@@ -10,11 +10,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     
-    env:
-      RUBYOPT: "-w"
-      ALL_WARNINGS: "/tmp/all-warnings"
-      
     strategy:
+      fail-fast: false
       matrix:
         ruby-version: ["2.7.2"]
 
@@ -23,8 +20,10 @@ jobs:
     
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby-version }}
-        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: rspec
-      run: bundle exec rspec spec/ 2>> "${ALL_WARNINGS}"
+        with:
+          bundler-cache: true
+          ruby-version: ${{ matrix.ruby-version }}
+    - name: Install dependencies
+      run: bundle install
+    - name: Run tests
+      run: bundle exec rspec spec/
