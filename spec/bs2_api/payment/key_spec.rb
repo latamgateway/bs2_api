@@ -21,8 +21,8 @@ RSpec.describe Bs2Api::Payment::Key do
 
     it "payment was created" do
       expect(@key_payment.payment).to be_a(Bs2Api::Entities::Payment)
-      expect(@key_payment.payment).to respond_to(:id)
-      expect(@key_payment.payment).to respond_to(:merchant_id)
+      expect(@key_payment.payment).to respond_to(:payment_id)
+      expect(@key_payment.payment).to respond_to(:end_to_end_id)
       expect(@key_payment.payment).to respond_to(:payer)
       expect(@key_payment.payment).to respond_to(:receiver)
     end

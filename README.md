@@ -66,10 +66,10 @@ pix_key = Bs2Api::Entities::PixKey.new(
 # Veja abaixo (Classes de errors) quais erros que podem ser lançados
 pay_key = Bs2Api::Payment::Key.new(pix_key).call
 
-pay_key.payment.id
+pay_key.payment.payment_idid
 => "96f0b3c4-4c76-4a7a-9933-9c9f86df7490" # pagamentoId gerado no BS2
 
-pay_key.payment.merchant_id
+pay_key.payment.end_to_end_id
 => "E710278662021061618144401750781P" # endToEndId gerado no BS2
 
 ```
@@ -98,10 +98,10 @@ receiver_bank = Bs2Api::Entities::Bank.new(
 
 pay_manual = Bs2Api::Payment::Manual.new(receiver_bank).call
 
-pay_manual.payment.id
+pay_manual.payment.payment_id
 => "96f0b3c4-4c76-4a7a-9933-9c9f86df7490" # UUID gerado no BS2
 
-pay_manual.payment.merchantId
+pay_manual.payment.end_to_end_id
 => "E710278662021061618144401750781P" # endToEndId gerado no BS2
 ```
 

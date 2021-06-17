@@ -75,8 +75,8 @@ RSpec.describe Bs2Api::Payment::Confirmation do
 
     it "payment was created" do
       expect(@manual_payment.payment).to be_a(Bs2Api::Entities::Payment)
-      expect(@manual_payment.payment).to respond_to(:id)
-      expect(@manual_payment.payment).to respond_to(:merchant_id)
+      expect(@manual_payment.payment).to respond_to(:payment_id)
+      expect(@manual_payment.payment).to respond_to(:end_to_end_id)
       expect(@manual_payment.payment).to respond_to(:payer)
       expect(@manual_payment.payment).to respond_to(:receiver)
     end      

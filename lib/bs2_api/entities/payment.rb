@@ -3,22 +3,22 @@
 module Bs2Api
   module Entities
     class Payment
-      attr_accessor :id, :merchant_id, :receiver, :payer
+      attr_accessor :payment_id, :end_to_end_id, :receiver, :payer
 
       def initialize(args = {})
-        @id          = args.fetch(:id, nil)
-        @merchant_id = args.fetch(:merchant_id, nil)
-        @receiver    = args.fetch(:receiver, nil)
-        @payer       = args.fetch(:payer, nil)
+        @payment_id    = args.fetch(:payment_id, nil)
+        @end_to_end_id = args.fetch(:end_to_end_id, nil)
+        @receiver      = args.fetch(:receiver, nil)
+        @payer         = args.fetch(:payer, nil)
       end
 
       def to_hash
         ActiveSupport::HashWithIndifferentAccess.new(
           {
-            "pagamentoId": @id,
-            "endToEndId": @merchant_id,
-            "recebedor": @receiver.to_hash,
-            "pagador": @payer.to_hash
+            "pagamentoId": @payment_id,
+            "endToEndId":  @end_to_end_id,
+            "recebedor":   @receiver.to_hash,
+            "pagador":     @payer.to_hash
           }
         )
       end
@@ -27,10 +27,10 @@ module Bs2Api
         hash = ActiveSupport::HashWithIndifferentAccess.new(hash_payload)
 
         Bs2Api::Entities::Payment.new(
-          id: hash["pagamentoId"],
-          merchant_id: hash["endToEndId"],
-          receiver: Bs2Api::Entities::Bank.from_response(hash["recebedor"]),
-          payer: Bs2Api::Entities::Bank.from_response(hash["pagador"])
+          payment_id:    hash["pagamentoId"],
+          end_to_end_id: hash["endToEndId"],
+          receiver:      Bs2Api::Entities::Bank.from_response(hash["recebedor"]),
+          payer:         Bs2Api::Entities::Bank.from_response(hash["pagador"])
         )
       end
     end
