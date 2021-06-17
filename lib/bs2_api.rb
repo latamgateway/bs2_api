@@ -8,6 +8,9 @@ require "active_support/core_ext/object/blank"
 require 'bs2_api/version'
 require 'bs2_api/configuration'
 
+require 'bs2_api/util/bank_service'
+require 'bs2_api/util/response'
+
 require 'bs2_api/errors/base'
 require 'bs2_api/errors/invalid_pix_key'
 require 'bs2_api/errors/invalid_bank'
@@ -31,8 +34,6 @@ require 'bs2_api/payment/manual'
 require 'bs2_api/payment/confirmation'
 
 require 'bs2_api/request/auth'
-
-require 'bs2_api/util/bank_service'
 
 module Bs2Api
   ENDPOINT = {

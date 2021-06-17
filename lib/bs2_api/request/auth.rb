@@ -39,7 +39,7 @@ module Bs2Api
           def body
             {
               grant_type: "client_credentials",
-              scope: "pix.write%20pix.read"
+              scope: "pix.write pix.read"
             }.to_query
           end
 

@@ -9,7 +9,7 @@ module Bs2Api
 
       def call
         response = post_request
-        raise Bs2Api::Errors::BadRequest, parse_error(response) unless response.created?
+        raise Bs2Api::Errors::BadRequest, ::Util::Response.parse_error(response) unless response.created?
         
         @payment = Bs2Api::Entities::Payment.from_response(response)
         self
@@ -30,21 +30,6 @@ module Bs2Api
 
         def bearer_token
           Bs2Api::Request::Auth.token
-        end
-
-        def parse_error(response)
-          hash    = JSON.parse(response.body)
-          message = "#{response.code}: "
-
-          if hash.is_a?(Array)
-            message << hash[0]["descricao"]
-          elsif hash.key?("error_description")
-            message << hash["error_description"]
-          else 
-            message << hash.to_s
-          end
-
-          message
         end
 
         def payload

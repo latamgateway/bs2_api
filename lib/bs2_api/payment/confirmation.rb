@@ -13,10 +13,14 @@ module Bs2Api
 
       def call
         response = post_request
-        raise Bs2Api::Errors::ConfirmationError, parse_error(response) unless response.accepted?
+        raise Bs2Api::Errors::ConfirmationError, ::Util::Response.parse_error(response) unless response.accepted?
 
         @success = true
         self
+      end
+
+      def success?
+        !!@success
       end
 
       private
@@ -28,10 +32,6 @@ module Bs2Api
         
         def url
           "#{Bs2Api.endpoint}/pix/direto/forintegration/v1/pagamentos/#{@payment.id}/confirmacao"
-        end
-
-        def success?
-          !!@success
         end
     end
   end
