@@ -1,4 +1,4 @@
-name: bs2_api ci
+name: bs2_api test
 
 on:
   push:
