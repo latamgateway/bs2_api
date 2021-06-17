@@ -1,3 +1,7 @@
+## [0.3.1] - 2021-06-16
+
+- Method Hash#to_query conflicting with Rails
+
 ## [0.3.0] - 2021-06-16
 
 - Confirmation, Adjust README.md
