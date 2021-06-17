@@ -1,6 +1,7 @@
 [![CI status](https://github.com/latamgateway/bs2_api/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/latamgateway/bs2_api/actions/workflows/test.yml)
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/latamgateway/bs2_api.svg?style=flat-square)](http://github.com/latamgateway/bs2_api/releases)
 [![Version](https://img.shields.io/gem/v/bs2_api.svg?style=flat-square)](https://rubygems.org/gems/bs2_api)
+![GitHub](https://img.shields.io/github/license/latamgateway/bs2_api?style=flat-square)
 
 # Bs2Api
 
