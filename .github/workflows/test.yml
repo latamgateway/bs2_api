@@ -1,0 +1,32 @@
+name: bs2_api ci
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    env:
+      RUBYOPT: "-w"
+      ALL_WARNINGS: "/tmp/all-warnings"
+      
+    strategy:
+      matrix:
+        ruby-version: ["2.4", "2.5", "2.6", "2.7"]
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: rspec
+      run: |
+        bundle install
+        bundle exec rspec spec/ 2>> "${ALL_WARNINGS}"
