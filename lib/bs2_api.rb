@@ -37,7 +37,8 @@ require 'bs2_api/util/bank_service'
 module Bs2Api
   ENDPOINT = {
     production: 'https://api.bs2.com',
-    sandbox: 'https://apihmz.bancobonsucesso.com.br'
+    sandbox: 'https://apihmz.bancobonsucesso.com.br',
+    test: 'https://apihmz.bancobonsucesso.com.br'
   }
 
   class << self
