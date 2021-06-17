@@ -10,12 +10,12 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Integração com a API do BS2"
   spec.description   = "Fazer transferências via PIX"
-  spec.homepage      = "https://github.com/kimpastro/bs2_api"
-  spec.required_ruby_version = ">= 2.7.2"
+  spec.homepage      = "https://github.com/latamgateway/bs2_api"
+  spec.required_ruby_version = "~> 2.7", "< 3"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/kimpastro/bs2_api"
-  spec.metadata["changelog_uri"] = "https://github.com/kimpastro/bs2_api/blob/main/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/latamgateway/bs2_api"
+  spec.metadata["changelog_uri"] = "https://github.com/latamgateway/bs2_api/blob/main/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
