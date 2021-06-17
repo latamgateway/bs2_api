@@ -9,6 +9,11 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      BS2_ENVIRONMENT: 'sandbox'
+      BS2_CLIENT_ID: '123'
+      BS2_CLIENT_SECRET: '123'
+      BS2_EVP_TEST_KEY: '123'
     
     strategy:
       matrix:
