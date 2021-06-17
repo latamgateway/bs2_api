@@ -1,3 +1,5 @@
+[![CI status](https://github.com/latamgateway/bs2_api/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/latamgateway/bs2_api/actions/workflows/test.yml)
+
 # Bs2Api
 
 Integração com a API do Banco BS2: https://devs.bs2.com/manual/pix-clientes
