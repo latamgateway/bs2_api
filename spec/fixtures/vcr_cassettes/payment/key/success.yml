@@ -5,7 +5,7 @@ http_interactions:
     uri: https://apihmz.bancobonsucesso.com.br/auth/oauth/v2/token
     body:
       encoding: UTF-8
-      string: grant_type=client_credentials&scope=pix.write%20pix.read
+      string: "<FILTERED>"
     headers:
       Content-Type:
       - application/x-www-form-urlencoded
@@ -15,6 +15,7 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       User-Agent:
       - Ruby
+      Authorization: "<FILTERED>"
   response:
     status:
       code: 200
@@ -31,19 +32,19 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Date:
-      - Wed, 16 Jun 2021 14:33:38 GMT
+      - Thu, 24 Jun 2021 21:53:53 GMT
       Content-Length:
       - '141'
       Connection:
       - keep-alive
       Set-Cookie:
-      - dtCookie=v_4_srv_5_sn_43F1C8A92FE644BBEDA3ED656EE3A6F8_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1;
+      - dtCookie=v_4_srv_6_sn_A4737E7B320DFD6CE19B569DECC3E092_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1_rcs-3Acss_0;
         Path=/; Domain=.bancobonsucesso.com.br
       Server-Timing:
       - cdn-cache; desc=MISS
-      - dtRpid;desc="-1111480624"
-      - edge; dur=20
-      - origin; dur=60
+      - dtRpid;desc="1595975831"
+      - edge; dur=7
+      - origin; dur=58
       X-Frame-Options:
       - SAMEORIGIN
       X-Content-Type-Options:
@@ -58,50 +59,55 @@ http_interactions:
       - 'max-age=63072000; IncludeSubDomains: preload'
     body:
       encoding: UTF-8
-      string: "{\r\n  \"access_token\":\"f3f83860-94e7-495c-aff4-24876eaa5348\",\r\n
+      string: "{\r\n  \"access_token\":\"a8155c37-425d-4057-a3a7-02f857ea368c\",\r\n
         \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":420,\r\n  \"scope\":\"pix.write
         pix.read\"\r\n}"
-  recorded_at: Wed, 16 Jun 2021 14:33:38 GMT
+  recorded_at: Thu, 24 Jun 2021 21:53:53 GMT
 - request:
     method: post
     uri: https://apihmz.bancobonsucesso.com.br/pix/direto/forintegration/v1/pagamentos/chave
     body:
       encoding: UTF-8
-      string: '{"chave":{"valor":"<BS2_EVP_TEST_KEY>","tipo":"EVP"}}'
+      string: "<FILTERED>"
     headers:
       Content-Type:
       - application/json
       Accept:
       - application/json
+      Authorization: "<FILTERED>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       User-Agent:
       - Ruby
   response:
     status:
-      code: 201
-      message: Created
+      code: 200
+      message: OK
     headers:
       X-Oneagent-Js-Injection:
       - 'true'
       Content-Type:
       - application/json;charset=utf-8
-      Content-Length:
-      - '304'
+      Vary:
+      - Accept-Encoding
       Date:
-      - Wed, 16 Jun 2021 14:33:39 GMT
+      - Thu, 24 Jun 2021 21:53:54 GMT
+      Content-Length:
+      - '602'
       Connection:
       - keep-alive
       Set-Cookie:
-      - dtCookie=v_4_srv_6_sn_75ED92E3CEB14C01537F7C80DF9ACBB9_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1;
+      - dtCookie=v_4_srv_4_sn_0F3620C6FF39603073A27B0B494AB1C0_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1_rcs-3Acss_0;
         Path=/; Domain=.bancobonsucesso.com.br
-      - dtCookie=v_4_srv_6_sn_CBC0B5BE5CD9BEB01EFEE0E5ADF82A82_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1;
+      - dtCookie=v_4_srv_4_sn_484B9227A6621F7C843AD5465D1D7720_perc_100000_ol_0_mul_1_rcs-3Acss_0;
+        Path=/pix/direto/forintegration/v1/pagamentos; Domain=apihmz.bancobonsucesso.com.br
+      - dtCookie=v_4_srv_4_sn_9548329831A9F6D338173F33010252FE_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1_rcs-3Acss_1;
         Path=/; Domain=.bancobonsucesso.com.br
       Server-Timing:
       - cdn-cache; desc=MISS
-      - dtRpid;desc="-486286984"
-      - edge; dur=21
-      - origin; dur=999
+      - dtRpid;desc="-499260705"
+      - edge; dur=8
+      - origin; dur=904
       X-Frame-Options:
       - SAMEORIGIN
       X-Content-Type-Options:
@@ -117,12 +123,11 @@ http_interactions:
       Strict-Transport-Security:
       - 'max-age=63072000; IncludeSubDomains: preload'
     body:
-      encoding: ASCII-8BIT
-      string: '{"pagamentoId":"dce166b9-fc9d-48dd-8e9f-84403a5b3ca4","endToEndId":"E710278662021061614333886951710P","recebedor":{"ispb":"71027866","conta":{"banco":"218","bancoNome":"BCO
-        BS2 S.A.","agencia":"0001","numero":"3134806","tipo":"ContaCorrente"},"pessoa":{"documento":"71027866000134","tipoDocumento":"CNPJ","nome":"Teste
+      encoding: UTF-8
+      string: '{"pagamentoId":"ee62251d-dea3-480e-b7fa-5b0bf111b4c9","endToEndId":"E710278662021062421535433994733P","recebedor":{"ispb":"71027866","conta":{"banco":"218","bancoNome":"BCO
+        BS2 S.A.","agencia":"0001","numero":"3134806","tipo":"ContaCorrente"},"pessoa":{"documento":"25215188000116","tipoDocumento":"CNPJ","nome":"Teste
         Automatizado","nomeFantasia":null}},"pagador":{"ispb":"71027866","conta":{"banco":"218","bancoNome":"BCO
-        BS2 S.A.","agencia":"0001","numero":"3135772","tipo":"ContaCorrente"},"pessoa":{"documento":"71027866000134","tipoDocumento":"CNPJ","nome":"Teste Automatizado","nomeFantasia":null}}}'
-  recorded_at: Wed, 16 Jun 2021 14:33:39 GMT
+        BS2 S.A.","agencia":"0001","numero":"3134806","tipo":"ContaCorrente"},"pessoa":{"documento":"25215188000116","tipoDocumento":"CNPJ","nome":"Teste
+        Automatizado","nomeFantasia":null}}}'
+  recorded_at: Thu, 24 Jun 2021 21:53:54 GMT
 recorded_with: VCR 6.0.0
-
-
