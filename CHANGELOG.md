@@ -1,3 +1,6 @@
+## [1.0.1] - 2021-06-25
+- Adjust HTTP response code when create payments into BS2
+
 ## [1.0.0] - 2021-06-18
 - Changed payment.id to payment.payment_id
 - Changed payment.merchant_id to payment.end_to_end_id
