@@ -9,8 +9,8 @@ module Bs2Api
 
       def call
         response = post_request
-        raise Bs2Api::Errors::BadRequest, ::Util::Response.parse_error(response) unless response.created?
-        
+        raise Bs2Api::Errors::BadRequest, ::Util::Response.parse_error(response) unless response.ok?
+
         @payment = Bs2Api::Entities::Payment.from_response(response)
         self
       end
@@ -35,7 +35,7 @@ module Bs2Api
         def payload
           raise NoMethodError, "Missing #{__method__} to #{self.class}"
         end
-        
+
         def url
           raise NoMethodError, "Missing #{__method__} to #{self.class}"
         end
