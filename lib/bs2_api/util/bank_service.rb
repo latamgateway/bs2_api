@@ -12,10 +12,9 @@ module Bs2Api
           bank
         end
 
-        private
-          def bank_list
-            @bank_list ||= YAML.load_file(File.join(__dir__, 'banks.yml'))
-          end
+        def bank_list
+          @bank_list ||= YAML.load_file(File.join(__dir__, 'banks.yml'))
+        end
       end
     end
   end
