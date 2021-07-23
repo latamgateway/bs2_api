@@ -1,6 +1,62 @@
 # frozen_string_literal: true
 
 RSpec.describe Bs2Api::Entities::Customer do
+  describe "Name" do
+    context "with first and last name" do
+      let!(:customer) { 
+        described_class.new(
+          document: '88899988811',
+          type: 'CPF',
+          name: 'Rick Sanches'
+        )
+      }
+
+      it "first name matches" do
+        expect(customer.first_name).to eq('Rick')
+      end
+
+      it "last name matches" do
+        expect(customer.last_name).to eq('Sanches')
+      end
+    end
+
+    context "without first and last name" do
+      let!(:customer) { 
+        described_class.new(
+          document: '88899988811',
+          type: 'CPF',
+          name: 'Rick'
+        )
+      }
+
+      it "first name matches" do
+        expect(customer.first_name).to eq('Rick')
+      end
+
+      it "last name is empty" do
+        expect(customer.last_name).to be_blank
+      end
+    end
+
+    context "with more than just first and last name" do
+      let!(:customer) { 
+        described_class.new(
+          document: '88899988811',
+          type: 'CPF',
+          name: 'Rick Silva Gomes Sanches'
+        )
+      }
+
+      it "first name matches" do
+        expect(customer.first_name).to eq('Rick')
+      end
+
+      it "last name matches" do
+        expect(customer.last_name).to eq('Sanches')
+      end
+    end
+  end
+
   describe "Object" do
     context "attributes" do
       it "has TYPES constant" do

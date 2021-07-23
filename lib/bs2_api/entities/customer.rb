@@ -46,6 +46,20 @@ module Bs2Api
       def business?
         @type == TYPES[:business]
       end
+
+      def first_name
+        split_name.first
+      end
+      
+      def last_name
+        return '' if split_name.size <= 1
+        split_name.last
+      end
+
+      private
+        def split_name
+          @split_name ||= @name.split(' ')
+        end
     end
   end
 end

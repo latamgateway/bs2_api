@@ -1,3 +1,6 @@
+## [1.0.3] - 2021-07-23
+- First and Last name methods to customer
+
 ## [1.0.1] - 2021-06-25
 - Adjust HTTP response code when create payments into BS2
 
