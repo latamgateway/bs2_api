@@ -22,6 +22,7 @@ module Bs2Api
       end
 
       def self.from_response(hash_payload)
+        return if hash_payload.blank?
         hash = ActiveSupport::HashWithIndifferentAccess.new(hash_payload)
 
         Bs2Api::Entities::Bank.new(

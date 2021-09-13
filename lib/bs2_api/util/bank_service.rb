@@ -8,7 +8,7 @@ module Bs2Api
       class << self
         def find_by_code code
           bank = bank_list.find {|b| b["code"] == code }
-          raise Bs2Api::Errors::MissingBank, 'Bank not registered into util/banks.yml file' if bank.blank?
+          raise Bs2Api::Errors::MissingBank, "Bank with code #{code} not registered into util/banks.yml file" if bank.blank?
           bank
         end
 

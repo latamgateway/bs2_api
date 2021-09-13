@@ -13,21 +13,21 @@ module Bs2Api
       end
 
       def to_hash
-        ActiveSupport::HashWithIndifferentAccess.new(
-          {
-            "pagamentoId": @payment_id,
-            "endToEndId":  @end_to_end_id,
-            "recebedor":   @receiver.to_hash,
-            "pagador":     @payer.to_hash
-          }
-        )
+        hash_data = {
+          "pagamentoId": @payment_id,
+          "endToEndId":  @end_to_end_id
+        }
+
+        hash_data.merge!({ "recebedor": @receiver.to_hash } ) if @receiver.present?
+        hash_data.merge!({ "pagador": @payer.to_hash } ) if @payer.present?
+        ActiveSupport::HashWithIndifferentAccess.new(hash_data)
       end
 
       def self.from_response(hash_payload)
         hash = ActiveSupport::HashWithIndifferentAccess.new(hash_payload)
 
         Bs2Api::Entities::Payment.new(
-          payment_id:    hash["pagamentoId"],
+          payment_id:    hash["pagamentoId"] || hash["cobranca"]["id"],
           end_to_end_id: hash["endToEndId"],
           receiver:      Bs2Api::Entities::Bank.from_response(hash["recebedor"]),
           payer:         Bs2Api::Entities::Bank.from_response(hash["pagador"])

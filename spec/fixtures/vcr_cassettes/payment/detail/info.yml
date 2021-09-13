@@ -1,0 +1,113 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://apihmz.bancobonsucesso.com.br/auth/oauth/v2/token
+    body:
+      encoding: UTF-8
+      string: "<FILTERED>"
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Authorization: "<FILTERED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-store
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '141'
+      Date:
+      - Mon, 13 Sep 2021 14:50:09 GMT
+      Connection:
+      - keep-alive
+      Server-Timing:
+      - cdn-cache; desc=MISS
+      - edge; dur=6
+      - origin; dur=55
+      Content-Security-Policy:
+      - Content-Security-Policy default-src 'self'; script-src 'self'; style-src 'self'
+        'unsafe-inline'; img-src 'self' data:;
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains ; preload
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - no-referrer; strict-origin-when-cross-origin
+    body:
+      encoding: UTF-8
+      string: "{\r\n  \"access_token\":\"5c898739-0436-472c-8771-2eebacf70294\",\r\n
+        \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":420,\r\n  \"scope\":\"pix.write
+        pix.read\"\r\n}"
+  recorded_at: Mon, 13 Sep 2021 14:50:09 GMT
+- request:
+    method: get
+    uri: https://apihmz.bancobonsucesso.com.br/pix/direto/forintegration/v1/pagamentos/dce166b9-fc9d-48dd-8e9f-84403a5b3ca4
+    body:
+      encoding: UTF-8
+      string: "<FILTERED>"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Authorization: "<FILTERED>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '837'
+      Date:
+      - Mon, 13 Sep 2021 14:50:11 GMT
+      Connection:
+      - keep-alive
+      Server-Timing:
+      - cdn-cache; desc=MISS
+      - edge; dur=10
+      - origin; dur=1843
+      Content-Security-Policy:
+      - Content-Security-Policy default-src 'self'; script-src 'self'; style-src 'self'
+        'unsafe-inline'; img-src 'self' data:;
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains ; preload
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache; no-store; max-age=0; must-revalidate
+      Referrer-Policy:
+      - no-referrer; strict-origin-when-cross-origin
+    body:
+      encoding: UTF-8
+      string: '{"endToEndId":"E710278662021061614333886951710P","status":"EXPIRADO","qrCode":null,"cobranca":{"id":"dce166b9-fc9d-48dd-8e9f-84403a5b3ca4","documento":{"revisao":0,"versao":0},"calendario":null,"pagador":null,"valor":{"original":0.00,"final":0.00,"juros":0.00,"multa":0.00,"desconto":0.00,"abatimento":0.0,"modalidadeAlteracao":0,"permiteAlteracao":false},"chave":{"id":"00000000-0000-0000-0000-000000000000","apelido":null,"valor":"e9e511e3-b765-4d27-abf9-03b0f9a1f3f1","tipo":"EVP"},"solicitacao":null,"infoAdicionais":null},"recebedor":{"ispb":"71027866","conta":{"banco":"218","bancoNome":"BCO
+        BS2 S.A.","agencia":"0001","numero":"3134806","tipo":"ContaCorrente"},"pessoa":{"documento":"***518800**","tipoDocumento":"CNPJ","nome":"Teste
+        Automatizado","nomeFantasia":null}},"erro":{"erroCodigo":null,"erroDescricao":null},"valor":0.0}'
+  recorded_at: Mon, 13 Sep 2021 14:50:11 GMT
+recorded_with: VCR 6.0.0

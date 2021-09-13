@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bs2_api (1.0.2)
+    bs2_api (1.0.3)
       activesupport
       builder
       bundler
@@ -11,7 +11,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (6.1.4)
+    activesupport (6.1.4.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -48,7 +48,7 @@ GEM
       byebug (~> 11.0)
       pry (~> 0.13.0)
     public_suffix (4.0.6)
-    rake (13.0.4)
+    rake (13.0.6)
     rexml (3.2.5)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)

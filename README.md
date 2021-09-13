@@ -12,7 +12,7 @@ TO-DO:
   - [x] Criar pagamento por Chave
   - [x] Criar pagamento Manual
   - [x] Confirmar pagamento
-  - [ ] Consultar pagamento
+  - [x] Consultar pagamento
 - Recebimentos (**Recebe** dinheiro de alguém)
   - [ ] Cobrança estático
   - [ ] Cobrança dinâmico
@@ -66,12 +66,14 @@ pix_key = Bs2Api::Entities::PixKey.new(
 # Veja abaixo (Classes de errors) quais erros que podem ser lançados
 pay_key = Bs2Api::Payment::Key.new(pix_key).call
 
-pay_key.payment.payment_idid
+pay_key.payment.payment_id
 => "96f0b3c4-4c76-4a7a-9933-9c9f86df7490" # pagamentoId gerado no BS2
 
 pay_key.payment.end_to_end_id
 => "E710278662021061618144401750781P" # endToEndId gerado no BS2
 
+pay_key.payment.class
+=> Bs2Api::Entities::Payment
 ```
 
 ### Inicia ordem de Transferência PIX via: Manual
@@ -99,10 +101,13 @@ receiver_bank = Bs2Api::Entities::Bank.new(
 pay_manual = Bs2Api::Payment::Manual.new(receiver_bank).call
 
 pay_manual.payment.payment_id
-=> "96f0b3c4-4c76-4a7a-9933-9c9f86df7490" # UUID gerado no BS2
+=> "96f0b3c4-4c76-4a7a-9933-9c9f86df7490" # Payment id no BS2
 
 pay_manual.payment.end_to_end_id
 => "E710278662021061618144401750781P" # endToEndId gerado no BS2
+
+pay_manual.payment.class
+=> Bs2Api::Entities::Payment
 ```
 
 ### Confirmar ordem de transferência
@@ -125,6 +130,21 @@ raise Bs2Api::Errors::ConfirmationError
 
 # Caso nenhum erro seja lançado significa que foi sucesso. Você pode ter certeza com
 confirmation.success?
+```
+
+### Busca informações do pagamento
+```ruby
+payment_id = "96f0b3c4-4c76-4a7a-9933-9c9f86df7490"
+
+payment = Bs2Api::Payment::Detail.new(payment_id).call # Payment id no BS2
+payment.id 
+=> "96f0b3c4-4c76-4a7a-9933-9c9f86df7490"
+
+payment.end_to_end_id
+=> "E710278662021061618144401750781P" # endToEndId gerado no BS2
+
+payment.class
+=> Bs2Api::Entities::Payment
 ```
 
 ### Classes de erros:

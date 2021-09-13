@@ -1,3 +1,6 @@
+## [1.1.0] - 2021-09-13
+- Get payment detail
+
 ## [1.0.3] - 2021-07-23
 - First and Last name methods to customer
 
