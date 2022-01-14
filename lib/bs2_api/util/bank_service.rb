@@ -9,7 +9,7 @@ module Bs2Api
         def find_by_code code
           code = code.to_s.strip
           bank = bank_list.find {|b| b["code"] == code }
-          raise Bs2Api::Errors::MissingBank, "Bank with code '#{code}' not registered into util/banks.yml file" if bank.blank?
+          raise Bs2Api::Errors::MissingBank, "Bank with code '#{code}' not registered into configuration file" if bank.blank?
           bank
         end
 
