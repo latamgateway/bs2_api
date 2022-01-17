@@ -7,9 +7,10 @@ module Bs2Api
     class BankService
       class << self
         def find_by_code code
-          code = code.to_s.strip
-          bank = bank_list.find {|b| b["code"] == code }
+          code = code.to_s.strip.to_i
+          bank = bank_list.find {|b| b["code"].to_i == code }
           raise Bs2Api::Errors::MissingBank, "Bank with code '#{code}' not registered into configuration file" if bank.blank?
+
           bank
         end
 
