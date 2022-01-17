@@ -5,7 +5,7 @@ RSpec.describe Bs2Api::Entities::Account do
     let(:hash_response) {
       {
         "banco": "218",
-        "bancoNome": "Banco BONSUCESSO",
+        "bancoNome": "BANCO BS2 S.A",
         "agencia": "456",
         "numero": "334",
         "tipo": "ContaCorrente"
@@ -50,7 +50,7 @@ RSpec.describe Bs2Api::Entities::Account do
 
       it "attributes matches" do
         expect(@account.bank_code).to eq('218')
-        expect(@account.bank_name).to eq('Banco BONSUCESSO')
+        expect(@account.bank_name).to eq('BANCO BS2 S.A')
         expect(@account.agency).to eq('456')
         expect(@account.number).to eq('334')
         expect(@account.type).to eq('Poupanca')
@@ -84,7 +84,7 @@ RSpec.describe Bs2Api::Entities::Account do
         expect(account).to be_a(Bs2Api::Entities::Account)
         
         expect(account.bank_code).to eq('218')
-        expect(account.bank_name).to eq('Banco BONSUCESSO')
+        expect(account.bank_name).to eq('BANCO BS2 S.A')
         expect(account.agency).to eq('456')
         expect(account.number).to eq('334')
         expect(account.type).to eq('ContaCorrente')
