@@ -27,7 +27,7 @@ module Bs2Api
         hash = ActiveSupport::HashWithIndifferentAccess.new(hash_payload)
 
         Bs2Api::Entities::Payment.new(
-          payment_id:    hash["pagamentoId"] || hash["cobranca"]["id"],
+          payment_id:    hash["cobranca"]["id"] || hash["pagamentoId"],
           end_to_end_id: hash["endToEndId"],
           receiver:      Bs2Api::Entities::Bank.from_response(hash["recebedor"]),
           payer:         Bs2Api::Entities::Bank.from_response(hash["pagador"])

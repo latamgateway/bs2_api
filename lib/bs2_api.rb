@@ -8,7 +8,6 @@ require "active_support/core_ext/object/blank"
 require 'bs2_api/version'
 require 'bs2_api/configuration'
 
-require 'bs2_api/util/bank_service'
 require 'bs2_api/util/response'
 
 require 'bs2_api/errors/base'

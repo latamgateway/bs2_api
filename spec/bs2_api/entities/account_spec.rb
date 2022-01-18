@@ -42,6 +42,7 @@ RSpec.describe Bs2Api::Entities::Account do
       before do
         @account = described_class.new(
           bank_code: '218',
+          bank_name: 'BANCO BS2 S.A',
           agency: '456',
           number: '334',
           type: 'Poupanca'

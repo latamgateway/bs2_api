@@ -14,7 +14,7 @@ module Bs2Api
       def to_hash
         ActiveSupport::HashWithIndifferentAccess.new(
           {
-            "ispb": get_ispb,
+            "ispb": @ispb,
             "conta": @account.to_hash,
             "pessoa": @customer.to_hash
           }
@@ -31,11 +31,6 @@ module Bs2Api
           customer: Bs2Api::Entities::Customer.from_response(hash["pessoa"])
         )
       end
-
-      private
-        def get_ispb
-          Bs2Api::Util::BankService.find_by_code(@account.bank_code)["ispb"]
-        end
     end
   end
 end
