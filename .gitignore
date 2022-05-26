@@ -13,3 +13,5 @@
 *.gem
 
 .env.test
+
+/.idea/
