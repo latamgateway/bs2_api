@@ -10,11 +10,12 @@ RSpec.describe Bs2Api::Entities::Payment do
         expect(payment).to respond_to(:end_to_end_id)
         expect(payment).to respond_to(:receiver)
         expect(payment).to respond_to(:payer)
+        expect(payment).to respond_to(:status)
 
         expect(payment).to respond_to(:'payment_id=')
         expect(payment).to respond_to(:'end_to_end_id=')
         expect(payment).to respond_to(:'receiver=')
-        expect(payment).to respond_to(:'payer=')
+        expect(payment).to respond_to(:'status=')
       end
     end
 
