@@ -34,7 +34,7 @@ require 'bs2_api/payment/key'
 require 'bs2_api/payment/manual'
 require 'bs2_api/payment/confirmation'
 require 'bs2_api/payment/detail'
-require 'bs2_api/payment/async_key'
+require 'bs2_api/payment/async'
 
 require 'bs2_api/request/auth'
 
