@@ -13,5 +13,8 @@
 *.gem
 
 .env.test
+.env.*.local
 
 /.idea/
+*.swp
+.byebug_history

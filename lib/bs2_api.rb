@@ -1,9 +1,10 @@
 # frozen_string_literal: true
-require "httparty"
-require "active_support/core_ext/hash/indifferent_access"
-require "active_support/core_ext/hash/except"
-require "active_support/core_ext/object/to_query"
-require "active_support/core_ext/object/blank"
+
+require 'httparty'
+require 'active_support/core_ext/hash/indifferent_access'
+require 'active_support/core_ext/hash/except'
+require 'active_support/core_ext/object/to_query'
+require 'active_support/core_ext/object/blank'
 
 require 'bs2_api/version'
 require 'bs2_api/configuration'
@@ -26,12 +27,14 @@ require 'bs2_api/entities/bank'
 require 'bs2_api/entities/customer'
 require 'bs2_api/entities/payment'
 require 'bs2_api/entities/pix_key'
+require 'bs2_api/entities/async_request'
 
 require 'bs2_api/payment/base'
 require 'bs2_api/payment/key'
 require 'bs2_api/payment/manual'
 require 'bs2_api/payment/confirmation'
 require 'bs2_api/payment/detail'
+require 'bs2_api/payment/async_key'
 
 require 'bs2_api/request/auth'
 
@@ -39,7 +42,7 @@ module Bs2Api
   ENDPOINT = {
     production: 'https://api.bs2.com',
     sandbox: 'https://apihmz.bancobonsucesso.com.br'
-  }
+  }.freeze
 
   class << self
     attr_writer :configuration
