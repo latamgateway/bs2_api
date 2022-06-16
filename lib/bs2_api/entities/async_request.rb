@@ -10,7 +10,7 @@ module Bs2Api
     # can be used to keep track of the transactino in the
     # response.
     class AsyncRequest
-      attr_accessor :identificator, :key, :value
+      attr_accessor :identificator, :pix_key, :value
 
       ALLOWED_PIX_KEY_TYPES = %w[
         CPF
@@ -30,9 +30,9 @@ module Bs2Api
       def to_hash
         ActiveSupport::HashWithIndifferentAccess.new(
           {
-            "identificador": @identificator,
-            "chave": @pix_key.to_hash,
-            "valor": @value
+            identificator: @identificator,
+            chave: @pix_key.to_hash,
+            valor: @value
           }
         )
       end
