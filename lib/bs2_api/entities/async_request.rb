@@ -19,12 +19,12 @@ module Bs2Api
         EVP
       ].freeze
 
-      def initialize(identificator, pix_key, value)
-        raise Errors::InvalidPixKey unless ALLOWED_PIX_KEY_TYPES.include? pix_key.type
+      def initialize(args = {})
+        @pix_key = args[:pix_key]
+        raise Errors::InvalidPixKey unless ALLOWED_PIX_KEY_TYPES.include? @pix_key.type
 
-        @identificator = identificator
-        @pix_key = pix_key
-        @value = value
+        @identificator = args.fetch(:identificator)
+        @value = args[:value]
       end
 
       def to_hash
