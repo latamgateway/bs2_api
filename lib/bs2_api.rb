@@ -28,6 +28,7 @@ require 'bs2_api/entities/customer'
 require 'bs2_api/entities/payment'
 require 'bs2_api/entities/pix_key'
 require 'bs2_api/entities/async_request'
+require 'bs2_api/entities/async_response'
 
 require 'bs2_api/payment/base'
 require 'bs2_api/payment/key'
