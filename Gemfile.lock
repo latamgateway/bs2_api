@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bs2_api (1.2.1)
+    bs2_api (1.2.2)
       activesupport
       builder
       bundler
@@ -26,6 +26,8 @@ GEM
       rexml
     diff-lcs (1.4.4)
     dotenv (2.7.6)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
     hashdiff (1.0.1)
     httparty (0.18.1)
       mime-types (~> 3.0)
@@ -80,7 +82,8 @@ PLATFORMS
 DEPENDENCIES
   bs2_api!
   dotenv (~> 2.7, >= 2.7.6)
-  pry-byebug (~> 3.9)
+  factory_bot (~> 6.1)
+  pry-byebug (~> 3.7)
   rspec (~> 3.10)
   uuid (~> 2.3, >= 2.3.9)
   vcr (~> 6.0)

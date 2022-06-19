@@ -6,6 +6,7 @@
 /pkg/
 /spec/reports/
 /tmp/
+/vendor/
 
 # rspec failure tracking
 .rspec_status
@@ -13,5 +14,9 @@
 *.gem
 
 .env.test
+.env.*.local
 
 /.idea/
+*.swp
+*.swo
+.byebug_history

@@ -16,29 +16,30 @@ module Bs2Api
       end
 
       private
-        def post_request
-          HTTParty.post(url, headers: headers, body: payload.to_json)
-        end
 
-        def headers
-          {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "Authorization": "Bearer #{bearer_token}"
-          }
-        end
+      def post_request
+        HTTParty.post(url, headers: headers, body: payload.to_json)
+      end
 
-        def bearer_token
-          Bs2Api::Request::Auth.token
-        end
+      def headers
+        {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': "Bearer #{bearer_token}"
+        }
+      end
 
-        def payload
-          raise NoMethodError, "Missing #{__method__} to #{self.class}"
-        end
+      def bearer_token
+        Bs2Api::Request::Auth.token
+      end
 
-        def url
-          raise NoMethodError, "Missing #{__method__} to #{self.class}"
-        end
+      def payload
+        raise NoMethodError, "Missing #{__method__} to #{self.class}"
+      end
+
+      def url
+        raise NoMethodError, "Missing #{__method__} to #{self.class}"
+      end
     end
   end
 end

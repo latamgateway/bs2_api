@@ -147,6 +147,46 @@ payment.class
 => Bs2Api::Entities::Payment
 ```
 
+
+### Async API
+Add initial asyc BS2 API implementation.
+    
+The API allows to pass multiple request all at once. In order to do so you must:
+1. Create `Bs2Api::Payment::Async`
+2. Create one or more PIX keys
+3. For each PIX key create `Bs2Api::Entities::AsyncRequest` passing in the PIX key, internal identifier and the value of the transaction
+4. Add each async request to the async payment via `Bs2Api::Payment::Async#add_request`
+5. When all requests are added call `Bs2Api::Payment::Async#call`
+6. In the response you will get list of payments of type `Bs2Api::Entities::AsyncResponse` whose confirmation will be sent via webhook
+6.1 If even one of the requests has invalid data, the response will be 400 and we won't get anything via webhook
+7. If the response from 6 was 202 but we don't get a webhook notification we should start polling the response manually. This is done by calling `Bs2Api::Payment::Async::check_payment_status`. It has one parameter the `Bs2Api::Entities::AsyncResponse#request_id`.The result from this will be `Bs2Api::Entities::AsyncStatus`, using it you can check if the payment was rejected or confirmed.
+
+```ruby
+ pix_key = Bs2Api::Entities::PixKey.new(
+  key: 'joao@gmail.com',
+  type: 'EMAIL'
+)
+
+async_request = Bs2Api::Entities::AsyncRequest.new(
+  pix_key: pix_key,
+  value: 10.0,
+  identificator: 'payment1'
+)
+
+async_payment = Bs2Api::Payment::Async.new
+async_payment.add_request(async_request)
+
+response_list = async_payment.call
+
+# Wait for webhook if notification does not arrive (for example for the first item)
+response_status = Bs2Api::Payment::Async.check_payment_status(response_list[0].request_id)
+
+# Check the status
+if response_status.rejected?
+  puts response_status.rejection_description
+end
+```
+
 ### Classes de erros:
 ```ruby
 # Todos erros herdam de:
