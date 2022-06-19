@@ -11,7 +11,7 @@ module Bs2Api
         phone: 'PHONE',
         email: 'EMAIL',
         random: 'EVP'
-      }
+      }.freeze
 
       def initialize(args = {})
         @key = args.fetch(:key, nil)
