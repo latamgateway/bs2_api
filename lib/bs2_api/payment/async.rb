@@ -12,11 +12,12 @@ module Bs2Api
         #
         # @param[String] request_id The id (SolicitacaoId) for the payment
         # returned by Bs2Api::Payment::Async#call
-        def check_request_status(request_id)
+        def check_payment_status(request_id)
           url = request_status_url(request_id)
           bearer_token = Bs2Api::Request::Auth.token
           headers = { 'Authorization': "Bearer #{bearer_token}" }
-          HTTParty.get(url, headers: headers)
+          response = HTTParty.get(url, headers: headers)
+          Bs2Api::Entities::AsyncStatus.from_response response.parsed_response
         end
 
         private

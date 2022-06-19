@@ -4,7 +4,7 @@ RSpec.describe Bs2Api::Payment::Async do
   describe 'Object' do
     it 'has API methods' do
       async_payment = described_class.new
-      expect(described_class).to respond_to(:check_request_status)
+      expect(described_class).to respond_to(:check_payment_status)
       expect(async_payment).to respond_to(:add_request)
       expect(async_payment).to respond_to(:requests_count)
       expect(async_payment).to respond_to(:call)
@@ -79,7 +79,8 @@ RSpec.describe Bs2Api::Payment::Async do
           response_list = @async_payment.call
           response = response_list[0]
           VCR.use_cassette('payment/async/correct/status') do
-            described_class.check_request_status(response.request_id)
+            status = described_class.check_payment_status(response.request_id)
+            expect(status.is_a?(Bs2Api::Entities::AsyncStatus)).to be(true)
           end
         end
       end
