@@ -19,22 +19,28 @@ module Bs2Api
         # Bs2Api::Payment::Async::check_payment_status
         # @param[Hash] The response body as a hash with string keys
         def from_response(hash)
-          byebug
-          self.new(
+          new(
             request_id: hash['solicitacaoId'],
             payment_id: hash['pagamentoId'],
-            end_to_end_id: hash['end_to_end_id'],
-            status: hash['status'],
+            end_to_end_id: hash['endToEndId'],
+            status: STATUS[hash['status']],
             agency: hash['agencia'],
-            number: hash['number'],
+            number: hash['numero'],
             pix_key: Bs2Api::Entities::PixKey.from_response(hash['chave']),
-            valor: hash['valor'],
+            value: hash['valor'],
             free_field: hash['campoLivre'],
             rejection_description: hash['rejeitadoDescricao'],
             error_description: hash['erroDescricao']
           )
         end
       end
+
+      STATUS = {
+        'Realizado' => :awaiting_validation,
+        'Iniciado' => :in_process,
+        'Confirmado' => :confirmed,
+        'Rejeitado' => :rejected
+      }.freeze
 
       def initialize(args = {})
         @request_id = args[:request_id]
@@ -48,6 +54,14 @@ module Bs2Api
         @free_field = args[:free_field]
         @rejection_description = args[:rejection_description]
         @error_description = args[:error_description]
+      end
+
+      def rejected?
+        @status == :rejected
+      end
+
+      def confirmed?
+        @status == :confirmed
       end
     end
   end
