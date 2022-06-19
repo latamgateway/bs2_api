@@ -12,7 +12,7 @@ module Bs2Api
       attr_accessor :identificator, :pix_key, :value, :error, :request_id
 
       class << self
-        def from_hash(input_hash)
+        def from_response(input_hash)
           pix_key = PixKey.new(
             key: input_hash['chave']['valor'],
             type: input_hash['chave']['tipo']
@@ -34,7 +34,6 @@ module Bs2Api
         @error = args[:error]
         @request_id = args[:request_id]
       end
-
     end
   end
 end

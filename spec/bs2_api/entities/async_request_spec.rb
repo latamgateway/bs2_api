@@ -31,7 +31,7 @@ RSpec.describe Bs2Api::Entities::AsyncRequest do
       let(:hash_result) do
         ActiveSupport::HashWithIndifferentAccess.new(
           {
-            identificator: valid_input[:identificator],
+            identificador: valid_input[:identificator],
             chave: valid_input[:pix_key].to_hash,
             valor: valid_input[:value]
           }
@@ -54,7 +54,7 @@ RSpec.describe Bs2Api::Entities::AsyncRequest do
         expect(request.to_hash).to eq(hash_result)
       end
 
-      it 'returns json' do
+      it 'has right JSON representation' do
         request = described_class.new(valid_input)
         expect(request.to_json).to eq(hash_result.to_json)
       end

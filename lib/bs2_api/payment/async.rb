@@ -14,7 +14,19 @@ module Bs2Api
         # returned by Bs2Api::Payment::Async#call
         def check_request_status(request_id)
           url = request_status_url(request_id)
-          HTTParty.get(url)
+          bearer_token = Bs2Api::Request::Auth.token
+          headers = { 'Authorization': "Bearer #{bearer_token}" }
+          HTTParty.get(url, headers: headers)
+        end
+
+        private
+
+        # The url where one can manually check the status of an async request
+        #
+        # @param[String] request_id The id (SolicitacaoId) for the payment
+        # returned by Bs2Api::Payment::Async#call
+        def request_status_url(request_id)
+          "#{Bs2Api.endpoint}/pix/direto/forintegration/v1/pagamentos/chave/solicitacoes/#{request_id}"
         end
       end
 
@@ -22,8 +34,19 @@ module Bs2Api
         @requests = []
       end
 
+      # Push request into the request bucker. This will not send the request.
+      # When Bs2Api::Payment::Async#call is called all requeststs from the bucket
+      # will be sent simultaneously
+      #
+      # @param[Bs2Api::Entities::AsyncRequest] The async request which is going
+      # to be placed in the bucket
       def add_request(request)
         @requests << request
+      end
+
+      # Get the size of the bucket list
+      def requests_count
+        @requests.length
       end
 
       # The response from call differs from Payment::Base#call because
@@ -31,24 +54,26 @@ module Bs2Api
       # Later on we will notified via webhook for all payments transactions
       # which were successful.
       #
+      # @important The API call will fail if even one of the bucket items has
+      # data (PIX key, value, etc).
+      #
       # @return[Hash] List of payments which we should expect to be confirmed via
       # webhook. The response will contain field "SolicitacaoId" genreated by BS2
       # this ID is used to match the payment in the webhook
       def call
         response = post_request
-        raise Bs2Api::Errors::BadRequest, ::Util::Response.parse_error(response) unless response.status == 202
+        raise Bs2Api::Errors::BadRequest, ::Util::Response.parse_error(response) unless response.code == 202
 
-        response.parsed_response
+        response.parsed_response.map do |async_response|
+          Bs2Api::Entities::AsyncResponse.from_response(async_response)
+        end
       end
 
       private
 
+      # The url which will be called in order to send the bucket request for processing
       def url
         "#{Bs2Api.endpoint}/pix/direto/forintegration/v1/pagamentos/chave/solicitacoes"
-      end
-
-      def request_status_url(request_id)
-        "#{Bs2Api.endpoint}/pix/direto/forintegration/v1/pagamentos/chave/solicitacoes/#{request_id}"
       end
 
       def payload

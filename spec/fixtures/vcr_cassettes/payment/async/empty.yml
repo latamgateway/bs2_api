@@ -1,0 +1,112 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://apihmz.bancobonsucesso.com.br/auth/oauth/v2/token
+    body:
+      encoding: UTF-8
+      string: "<FILTERED>"
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Authorization: "<FILTERED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-store
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '141'
+      Date:
+      - Sun, 19 Jun 2022 11:35:56 GMT
+      Connection:
+      - keep-alive
+      Server-Timing:
+      - cdn-cache; desc=MISS
+      - edge; dur=206
+      - origin; dur=61
+      Content-Security-Policy:
+      - Content-Security-Policy default-src 'self'; script-src 'self'; style-src 'self'
+        'unsafe-inline'; img-src 'self' data:;
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains ; preload
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - no-referrer; strict-origin-when-cross-origin
+    body:
+      encoding: UTF-8
+      string: "{\r\n  \"access_token\":\"0990f086-15e5-4ef9-9c95-43c8cfcd8032\",\r\n
+        \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":420,\r\n  \"scope\":\"pix.write
+        pix.read\"\r\n}"
+  recorded_at: Sun, 19 Jun 2022 11:35:56 GMT
+- request:
+    method: post
+    uri: https://apihmz.bancobonsucesso.com.br/pix/direto/forintegration/v1/pagamentos/chave/solicitacoes
+    body:
+      encoding: UTF-8
+      string: "<FILTERED>"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Authorization: "<FILTERED>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '75'
+      Date:
+      - Sun, 19 Jun 2022 11:35:57 GMT
+      Connection:
+      - close
+      Server-Timing:
+      - cdn-cache; desc=MISS
+      - edge; dur=210
+      - origin; dur=710
+      Content-Security-Policy:
+      - Content-Security-Policy default-src 'self'; script-src 'self'; style-src 'self'
+        'unsafe-inline'; img-src 'self' data:;
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains ; preload
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache; no-store; max-age=0; must-revalidate
+      Referrer-Policy:
+      - no-referrer; strict-origin-when-cross-origin
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sidGFnIjpudWxsLCJkZXNjcmljYW8iOiJQZWxvIG1lbm9zIHVtYSBzb2xpY2l0YcOnw6NvIGRldmUgc2VyIGVudmlhZGEuIn1d
+  recorded_at: Sun, 19 Jun 2022 11:35:57 GMT
+recorded_with: VCR 6.0.0

@@ -30,7 +30,7 @@ module Bs2Api
       def to_hash
         ActiveSupport::HashWithIndifferentAccess.new(
           {
-            identificator: @identificator,
+            identificador: @identificator,
             chave: @pix_key.to_hash,
             valor: @value
           }

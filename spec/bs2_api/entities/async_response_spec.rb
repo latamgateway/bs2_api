@@ -27,7 +27,7 @@ RSpec.describe Bs2Api::Entities::AsyncResponse do
       end
 
       it 'can be initialized via hash' do
-        resp = described_class.from_hash(hash_input)
+        resp = described_class.from_response(hash_input)
         expect(resp.identificator).to eq(hash_input['identificador'])
         expect(resp.request_id).to eq(hash_input['solicitacaoId'])
         expect(resp.pix_key.key).to eq(pix_key.key)

@@ -7,7 +7,8 @@ require 'vcr'
 require 'pry'
 require 'factory_bot'
 
-Dotenv.load(".env.test")
+Dotenv.load('.env.test')
+Dotenv.load('.env.test.local')
 
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
