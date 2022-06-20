@@ -39,7 +39,8 @@ module Bs2Api
         'Realizado' => :awaiting_validation,
         'Iniciado' => :in_process,
         'Confirmado' => :confirmed,
-        'Rejeitado' => :rejected
+        'Rejeitado' => :rejected,
+        'Erro' => :error
       }.freeze
 
       def initialize(args = {})
@@ -62,6 +63,10 @@ module Bs2Api
 
       def confirmed?
         @status == :confirmed
+      end
+
+      def error?
+        @status == :error
       end
     end
   end

@@ -5,6 +5,8 @@ module Bs2Api
     # Class used to store a bucket of requests which will be sent
     # altogether.
     class Async < Base
+      attr_reader :requests
+
       class << self
         # Check the status of a request manually. Usually we will be notified
         # via webhook, but in case we do not get notification for a specific
@@ -12,9 +14,20 @@ module Bs2Api
         #
         # @param[String] request_id The id (SolicitacaoId) for the payment
         # returned by Bs2Api::Payment::Async#call
-        def check_payment_status(request_id)
+        # @param[String] client_id ID of the client issued by BS2 used for
+        # authorizatino. Optional, if not passed the default will be used
+        # @param[String] client_secret The password for the account with
+        # id client_id. Optional, if not passed the default will be used.
+        def check_payment_status(
+          request_id,
+          client_id: Bs2Api.configuration.client_id,
+          client_secret: Bs2Api.configuration.client_secret
+        )
           url = request_status_url(request_id)
-          bearer_token = Bs2Api::Request::Auth.token
+          bearer_token = Bs2Api::Request::Auth.token(
+            client_id: client_id,
+            client_secret: client_secret
+          )
           headers = { 'Authorization': "Bearer #{bearer_token}" }
           response = HTTParty.get(url, headers: headers)
           Bs2Api::Entities::AsyncStatus.from_response response.parsed_response
@@ -31,7 +44,12 @@ module Bs2Api
         end
       end
 
-      def initialize
+      def initialize(
+        client_id: Bs2Api.configuration.client_id,
+        client_secret: Bs2Api.configuration.client_secret
+      )
+        @client_id = client_id
+        @client_secret = client_secret
         @requests = []
       end
 
