@@ -44,9 +44,12 @@ module Bs2Api
         end
       end
 
-      def initialize(args = {})
-        @client_id = args.fetch(:client_id, Bs2Api.configuration.client_id)
-        @client_secret = args.fetch(:client_secret, Bs2Api.configuration.client_secret)
+      def initialize(
+        client_id: Bs2Api.configuration.client_id,
+        client_secret: Bs2Api.configuration.client_secret
+      )
+        @client_id = client_id
+        @client_secret = client_secret
         @requests = []
       end
 
