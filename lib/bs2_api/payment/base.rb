@@ -30,7 +30,11 @@ module Bs2Api
       end
 
       def bearer_token
-        Bs2Api::Request::Auth.token
+        if @client_id && @client_secret
+          Bs2Api::Request::Auth.token(client_id: @client_id, client_secret: @client_secret)
+        else
+          Bs2Api::Request::Auth.token
+        end
       end
 
       def payload

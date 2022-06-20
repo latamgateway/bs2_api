@@ -6,11 +6,11 @@ module Bs2Api
       class << self
         def token(
           client_id: Bs2Api.configuration.client_id,
-          password: Bs2Api.configuration.client_secret
+          client_secret: Bs2Api.configuration.client_secret
         )
           Bs2Api.configuration.valid?
 
-          response = create_session(client_id, password)
+          response = create_session(client_id, client_secret)
 
           raise Bs2Api::Errors::Unauthorized, response['error_description'] if response.unauthorized?
           raise Bs2Api::Errors::BadRequest, response['error_description'] if response.bad_request?
