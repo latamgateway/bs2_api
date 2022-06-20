@@ -1,0 +1,109 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://apihmz.bancobonsucesso.com.br/auth/oauth/v2/token
+    body:
+      encoding: UTF-8
+      string: "<FILTERED>"
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Authorization: "<FILTERED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-store
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '141'
+      Date:
+      - Mon, 20 Jun 2022 09:34:06 GMT
+      Connection:
+      - keep-alive
+      Server-Timing:
+      - cdn-cache; desc=MISS
+      - edge; dur=206
+      - origin; dur=162
+      Content-Security-Policy:
+      - Content-Security-Policy default-src 'self'; script-src 'self'; style-src 'self'
+        'unsafe-inline'; img-src 'self' data:;
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains ; preload
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - no-referrer; strict-origin-when-cross-origin
+    body:
+      encoding: UTF-8
+      string: "{\r\n  \"access_token\":\"b0e8403a-9ffb-40cc-8e59-1216189fce9c\",\r\n
+        \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":420,\r\n  \"scope\":\"pix.write
+        pix.read\"\r\n}"
+  recorded_at: Mon, 20 Jun 2022 09:34:06 GMT
+- request:
+    method: get
+    uri: https://apihmz.bancobonsucesso.com.br/pix/direto/forintegration/v1/pagamentos/chave/solicitacoes/cc37c3fc-6af7-4685-9867-1bb6dcbdbbd6
+    body:
+      encoding: UTF-8
+      string: "<FILTERED>"
+    headers:
+      Authorization: "<FILTERED>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '340'
+      Date:
+      - Mon, 20 Jun 2022 09:34:07 GMT
+      Connection:
+      - keep-alive
+      Server-Timing:
+      - cdn-cache; desc=MISS
+      - edge; dur=204
+      - origin; dur=762
+      Content-Security-Policy:
+      - Content-Security-Policy default-src 'self'; script-src 'self'; style-src 'self'
+        'unsafe-inline'; img-src 'self' data:;
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains ; preload
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache; no-store; max-age=0; must-revalidate
+      Referrer-Policy:
+      - no-referrer; strict-origin-when-cross-origin
+    body:
+      encoding: UTF-8
+      string: '{"solicitacaoId":"cc37c3fc-6af7-4685-9867-1bb6dcbdbbd6","pagamentoId":"ec76a73c-d9c4-441d-ae05-2ed4ef5cb8d5","endToEndId":"E710278662022062009283701617377P","status":"Confirmado","agencia":"1","numero":"3135772","chave":{"valor":"74824232000109","tipo":"CNPJ"},"valor":10.00,"campoLivre":null,"rejeitadoDescricao":null,"erroDescricao":null}'
+  recorded_at: Mon, 20 Jun 2022 09:34:07 GMT
+recorded_with: VCR 6.0.0

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bs2_api (1.2.2)
+    bs2_api (1.3.2)
       activesupport
       builder
       bundler
