@@ -119,8 +119,7 @@ RSpec.describe Bs2Api::Payment::Async do
 
       after(:all) do
         # Restore the Bs2Api.configuration
-        Bs2Api.configuration.client_id = ENV['BS2_CLIENT_ID']
-        Bs2Api.configuration.client_secret = ENV['BS2_CLIENT_SECRET']
+        set_configuration
       end
 
       it 'can create async payment with custom credentials' do
