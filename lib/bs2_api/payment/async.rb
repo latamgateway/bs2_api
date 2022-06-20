@@ -5,6 +5,8 @@ module Bs2Api
     # Class used to store a bucket of requests which will be sent
     # altogether.
     class Async < Base
+      attr_reader :requests
+
       class << self
         # Check the status of a request manually. Usually we will be notified
         # via webhook, but in case we do not get notification for a specific
