@@ -149,8 +149,8 @@ RSpec.describe Bs2Api::Payment::Async do
             client_secret = ENV['BS2_CLIENT_SECRET']
             status = described_class.check_payment_status(
               response.request_id,
-              client_id,
-              client_secret
+              client_id: client_id,
+              client_secret: client_secret
             )
             expect(status.is_a?(Bs2Api::Entities::AsyncStatus)).to be(true)
           end

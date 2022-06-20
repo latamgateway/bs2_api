@@ -20,8 +20,8 @@ module Bs2Api
         # id client_id. Optional, if not passed the default will be used.
         def check_payment_status(
           request_id,
-          client_id = Bs2Api.configuration.client_id,
-          client_secret = Bs2Api.configuration.client_secret
+          client_id: Bs2Api.configuration.client_id,
+          client_secret: Bs2Api.configuration.client_secret
         )
           url = request_status_url(request_id)
           bearer_token = Bs2Api::Request::Auth.token(
