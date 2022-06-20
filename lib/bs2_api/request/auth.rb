@@ -4,27 +4,30 @@ module Bs2Api
   module Request
     class Auth
       class << self
-        def token
+        def token(
+          client_id: Bs2Api.configuration.client_id,
+          password: Bs2Api.configuration.client_secret
+        )
           Bs2Api.configuration.valid?
 
-          response = create_session
+          response = create_session(client_id, password)
 
-          raise Bs2Api::Errors::Unauthorized, response["error_description"] if response.unauthorized?
-          raise Bs2Api::Errors::BadRequest, response["error_description"] if response.bad_request?
-          raise Bs2Api::Errors::ServerError, response.body if !response.success?
+          raise Bs2Api::Errors::Unauthorized, response['error_description'] if response.unauthorized?
+          raise Bs2Api::Errors::BadRequest, response['error_description'] if response.bad_request?
+          raise Bs2Api::Errors::ServerError, response.body unless response.success?
 
-          response["access_token"]
+          response['access_token']
         end
 
         private
-          def create_session
+          def create_session(client_id, client_secret)
             HTTParty.post(
               auth_url,
               headers: headers,
               body: body,
               basic_auth: {
-                username: Bs2Api.configuration.client_id,
-                password: Bs2Api.configuration.client_secret
+                username: client_id,
+                password: client_secret
               }
             )
           end
