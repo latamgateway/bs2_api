@@ -49,7 +49,7 @@ module Bs2Api
           def auth_url
             "#{Bs2Api.endpoint}/auth/oauth/v2/token"
           end
-     end
+      end
     end
   end
 end
