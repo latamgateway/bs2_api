@@ -13,6 +13,7 @@ Dotenv.load('.env.test.local')
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
+  config.allow_http_connections_when_no_cassette = true
 
   config.before_record do |i|
     i.request.headers["Authorization"] = '<FILTERED>'
