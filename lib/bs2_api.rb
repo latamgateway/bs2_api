@@ -40,6 +40,10 @@ require 'bs2_api/payment/async'
 
 require 'bs2_api/request/auth'
 
+
+require 'bs2_api/refund/pix/create'
+require 'bs2_api/refund/pix/detail'
+
 module Bs2Api
   ENDPOINT = {
     production: 'https://api.bs2.com',
