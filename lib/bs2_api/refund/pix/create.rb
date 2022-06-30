@@ -29,7 +29,6 @@ module Bs2Api
             client_secret: @client_secret
           )
 
-          # TODO: is PUT the right method?
           response = HTTParty.put(
             url,
             http_proxyaddr: @proxy&.host,
@@ -42,7 +41,7 @@ module Bs2Api
               'Authorization' => "Bearer #{access_token}",
             },
             body: {
-              valor: value
+              valor: @value
             }.to_json
           )
 

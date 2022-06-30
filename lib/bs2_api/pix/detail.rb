@@ -19,7 +19,6 @@ module Bs2Api
 
       def call
         url = "#{Bs2Api.endpoint}/pix/direto/forintegration/v1/recebimentos/#{@end_to_end_id}/recebimento"
-
         access_token = Bs2Api::Request::Auth.token(
           client_id: @client_id,
           client_secret: @client_secret
