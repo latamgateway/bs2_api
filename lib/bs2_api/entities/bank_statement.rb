@@ -14,13 +14,17 @@ module Bs2Api
 
       attr_reader :value,
                   :moved_at,
-                  :protocol
+                  :protocol,
+                  :end_to_end_id
 
       def initialize(movement)
         @movement = movement
-        @value = @movement.fetch(:valor)
+
+        @value    = @movement.fetch(:valor)
         @moved_at = @movement.fetch(:movimentadoEm)
         @protocol = @movement.fetch(:protocolo)
+
+        @end_to_end_id = @movement.dig(:pix, :endToEndId)
       end
 
       def pix?
