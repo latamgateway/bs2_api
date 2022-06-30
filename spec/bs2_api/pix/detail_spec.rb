@@ -18,4 +18,12 @@ RSpec.describe Bs2Api::Pix::Detail do
       end
     end
   end
+
+  describe :details do
+    it 'returns the pix details' do
+      result = VCR.use_cassette('pix/detail/call') do
+        @details.details
+      end
+    end
+  end
 end
