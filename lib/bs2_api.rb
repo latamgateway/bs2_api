@@ -31,6 +31,8 @@ require 'bs2_api/entities/async_request'
 require 'bs2_api/entities/async_response'
 require 'bs2_api/entities/async_status'
 
+require 'bs2_api/pix/detail'
+
 require 'bs2_api/payment/base'
 require 'bs2_api/payment/key'
 require 'bs2_api/payment/manual'
@@ -39,7 +41,6 @@ require 'bs2_api/payment/detail'
 require 'bs2_api/payment/async'
 
 require 'bs2_api/request/auth'
-
 
 require 'bs2_api/refund/pix/create'
 require 'bs2_api/refund/pix/detail'
