@@ -45,7 +45,7 @@ module Bs2Api
             }.to_json
           )
 
-          raise response.body unless response.success?
+          raise Bs2Api::Errors::RefundError, response.body.to_s unless response.success?
 
           response.body
         end
