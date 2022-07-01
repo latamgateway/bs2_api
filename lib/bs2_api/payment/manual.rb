@@ -3,7 +3,14 @@
 module Bs2Api
   module Payment
     class Manual < Base
-      def initialize bank
+      def initialize(
+        bank,
+        client_id: Bs2Api.configuration.client_id,
+        client_secret: Bs2Api.configuration.client_secret
+      )
+
+        @client_id = client_id
+        @client_secret = client_secret
         raise Bs2Api::Errors::InvalidBank, 'Invalid Bank' unless bank.is_a?(Bs2Api::Entities::Bank)
         @bank = bank
       end
