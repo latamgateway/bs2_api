@@ -7,16 +7,18 @@ module Bs2Api
         payment,
         value: nil,
         client_id: Bs2Api.configuration.client_id,
-        client_secret: Bs2Api.configuration.client_secret
+        client_secret: Bs2Api.configuration.client_secret,
+        proxy: nil
       )
-        @client_id = client_id
-        @client_secret = client_secret
-
+      
         raise Bs2Api::Errors::ConfirmationError, 'invalid payment' unless payment.present? && payment.is_a?(Bs2Api::Entities::Payment)
         raise Bs2Api::Errors::ConfirmationError, 'invalid value' unless value.to_f.positive?
-        @payment = payment
 
+        @payment = payment
         @value = value.to_f
+        @client_id = client_id
+        @client_secret = client_secret
+        @proxy = proxy
       end
 
       def call

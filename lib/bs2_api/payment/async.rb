@@ -46,10 +46,12 @@ module Bs2Api
 
       def initialize(
         client_id: Bs2Api.configuration.client_id,
-        client_secret: Bs2Api.configuration.client_secret
+        client_secret: Bs2Api.configuration.client_secret,
+        proxy: nil
       )
         @client_id = client_id
         @client_secret = client_secret
+        @proxy = proxy
         @requests = []
       end
 

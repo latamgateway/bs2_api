@@ -6,11 +6,13 @@ module Bs2Api
       def initialize(
         payment_id,
         client_id: Bs2Api.configuration.client_id,
-        client_secret: Bs2Api.configuration.client_secret
+        client_secret: Bs2Api.configuration.client_secret,
+        proxy: nil
       )
+        @payment_id = payment_id
         @client_id = client_id
         @client_secret = client_secret
-        @payment_id = payment_id
+        @proxy = proxy
       end
 
       def call

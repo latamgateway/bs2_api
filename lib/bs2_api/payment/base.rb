@@ -18,7 +18,15 @@ module Bs2Api
       private
 
       def post_request
-        HTTParty.post(url, headers: headers, body: payload.to_json)
+        HTTParty.post(
+          url,
+          http_proxyaddr: @proxy&.host,
+          http_proxyport: @proxy&.port,
+          http_proxyuser: @proxy&.user,
+          http_proxypass: @proxy&.password,
+          headers: headers,
+          body: payload.to_json
+        )
       end
 
       def headers
