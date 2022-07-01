@@ -3,7 +3,15 @@ module Bs2Api
     class Confirmation < Base
       attr_reader :success
 
-      def initialize payment, value: nil
+      def initialize(
+        payment,
+        value: nil,
+        client_id: Bs2Api.configuration.client_id,
+        client_secret: Bs2Api.configuration.client_secret
+      )
+        @client_id = client_id
+        @client_secret = client_secret
+
         raise Bs2Api::Errors::ConfirmationError, 'invalid payment' unless payment.present? && payment.is_a?(Bs2Api::Entities::Payment)
         raise Bs2Api::Errors::ConfirmationError, 'invalid value' unless value.to_f.positive?
         @payment = payment
