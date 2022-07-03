@@ -6,7 +6,7 @@ module Bs2Api
           'EM_PROCESSAMENTO' => :processing,
           'DEVOLVIDO' => :refunded,
           'NAO_REALIZADO' => :not_achieved,
-        }.transform_keys(&:downcase).freeze
+        }.freeze
 
         def initialize(
           client_id:,
@@ -46,7 +46,7 @@ module Bs2Api
 
           raise response.body unless response.success?
 
-          response.body
+          JSON.parse(response.body)
         end
 
         def status
