@@ -4,8 +4,8 @@ RSpec.describe Bs2Api::BankStatement::List do
   before do
     @list = Bs2Api::BankStatement::List.new(
       access_token: ENV.fetch('BS2_ACCESS_TOKEN', 'dummy'),
-      time_range: (Date.today - 29).to_time.utc..(Date.today + 1).to_time.utc,
-      proxy: URI.parse(ENV.fetch('FIXIE_URL'))
+      time_range: Time.iso8601('2022-05-30T21:00:00Z')..Time.iso8601('2022-06-29T21:00:00Z'),
+      proxy: fixie_proxy
     )
   end
 
