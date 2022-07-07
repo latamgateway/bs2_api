@@ -8,7 +8,7 @@ RSpec.describe Bs2Api::Refund::Pix::Detail do
       # TODO: Use new IDs to get test cassette
       end_to_end_id: 'E710278662022061718123604409185P',
       transaction_id: 'ae1fcbc93ba6452bbc06124eab3e7fca',
-      proxy: URI.parse(ENV.fetch('FIXIE_URL'))
+      proxy: fixie_proxy
     )
   end
 

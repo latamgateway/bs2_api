@@ -46,3 +46,11 @@ def set_configuration
     config.client_secret = ENV['BS2_CLIENT_SECRET']
   end
 end
+
+def fixie_proxy
+  if ENV.key?('FIXIE_URL')
+    URI.parse(ENV.fetch('FIXIE_URL'))
+  else
+    nil
+  end
+end
