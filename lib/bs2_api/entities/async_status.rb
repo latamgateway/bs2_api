@@ -68,6 +68,14 @@ module Bs2Api
       def error?
         @status == :error
       end
+
+      def awaiting_validation?
+        @status == :awaiting_validation
+      end
+
+      def in_process?
+        @status == :in_process
+      end
     end
   end
 end

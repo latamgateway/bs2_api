@@ -21,15 +21,28 @@ module Bs2Api
         def check_payment_status(
           request_id,
           client_id: Bs2Api.configuration.client_id,
-          client_secret: Bs2Api.configuration.client_secret
+          client_secret: Bs2Api.configuration.client_secret,
+          proxy: nil
         )
-          url = request_status_url(request_id)
+
           bearer_token = Bs2Api::Request::Auth.token(
             client_id: client_id,
             client_secret: client_secret
           )
-          headers = { 'Authorization': "Bearer #{bearer_token}" }
-          response = HTTParty.get(url, headers: headers)
+
+          response = HTTParty.get(
+            request_status_url(request_id), 
+            http_proxyaddr: proxy&.host,
+            http_proxyport: proxy&.port,
+            http_proxyuser: proxy&.user,
+            http_proxypass: proxy&.password,
+            headers: { 
+              'Authorization': "Bearer #{bearer_token}"
+            }
+          )
+
+          raise Bs2Api::Errors::Base, response.body.to_s unless response.success?
+
           Bs2Api::Entities::AsyncStatus.from_response response.parsed_response
         end
 
