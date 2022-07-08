@@ -1,3 +1,5 @@
+require_relative '../entities/pix_detail'
+
 module Bs2Api
   module Pix
     class Detail
@@ -44,7 +46,11 @@ module Bs2Api
 
         raise response.body unless response.success?
 
-        response.body
+        JSON.parse(response.body, symbolize_names: true)
+      end
+
+      def details
+        Entities::PixDetail.new(call)
       end
     end
   end

@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://apihmz.bancobonsucesso.com.br/pj/apibanking/forintegration/v1/contascorrentes/extrato?inicio=0&limite=100&movimentoFinal=2022-06-29T21:00:00Z&movimentoInicial=2022-05-30T21:00:00Z
+    body:
+      encoding: UTF-8
+      string: "<FILTERED>"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Authorization: "<FILTERED>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - DENY
+      X-Frame-Options-2:
+      - DENY
+      Content-Security-Policy:
+      - default-src 'none'; base-uri 'none'; form-action 'self'; script-src 'strict-dynamic';
+        img-src 'self'; font-src 'self'; style-src 'self'; frame-ancestors 'none';
+        x-frame-options 'DENY'
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '1166'
+      Date:
+      - Wed, 29 Jun 2022 13:03:22 GMT
+      Connection:
+      - keep-alive
+      Server-Timing:
+      - cdn-cache; desc=MISS
+      - edge; dur=114
+      - origin; dur=3389
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains ; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache; no-store; max-age=0; must-revalidate
+      Referrer-Policy:
+      - no-referrer; strict-origin-when-cross-origin
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJzYWxkbyI6eyJpbmljaWFsIjoxMDAwMDAwMC4wMCwiZmluYWwiOjEwMDAwMDAwLjAwLCJibG9xdWVhZG8iOnsicG9yMjRIb3JhcyI6MC4wLCJwb3I0OEhvcmFzIjowLjAsImFjaW1hIjowLjAwLCJqdWRpY2lhbCI6MC4wMH19LCJjaGVxdWVFc3BlY2lhbCI6bnVsbCwibW92aW1lbnRhY29lcyI6W3sibW92aW1lbnRhZG9FbSI6IjIwMjItMDYtMTdUMTU6MzQ6MzIuNDQ3IiwiZGVzY3JpY2FvIjoiRGV2b2x1w6fDo28gRMOpYml0byBQaXggVHJhbnNmLiBJbnRlcm5hIiwiZGVzY3JpY2FvQWJyZXZpYWRhIjoiRGV2IFBpeCBJbnRlcm5vIEVudmlhZGEiLCJ2YWxvciI6MTIuMzQsInRpcG9Nb3ZpbWVudGFjYW8iOjEsInRpcG9DYXRlZ29yaWEiOjE4LCJkb2N1bWVudG8iOiIwIiwib2JzZXJ2YWNhbyI6IiIsInByb3RvY29sbyI6IjIxODAwMDEwMDAzMTMxODA3MjAyMjA2MTc1MDAwMDIiLCJyZW1ldGVudGUiOm51bGwsImZhdm9yZWNpZG8iOnsibm9tZSI6IkxhdGFtZ2F0ZXdheSIsImRvY3VtZW50byI6IjMzNjMwNjYxMDAwMTUwIiwibm9tZUJhbmNvIjoiIiwiYmFuY28iOjAsImFnZW5jaWEiOjEsImNvbnRhIjo5ODY1OTI2fSwicGl4Ijp7ImVuZFRvRW5kSWQiOiJENzEwMjc4NjYyMDIyMDYxNzE4MzQzMjUzMzE0MTQyRCJ9fSx7Im1vdmltZW50YWRvRW0iOiIyMDIyLTA2LTE3VDE1OjE0OjU1LjQ5NyIsImRlc2NyaWNhbyI6IkNyw6lkaXRvIFBpeCBUcmFuc2YuIEludGVybmEiLCJkZXNjcmljYW9BYnJldmlhZGEiOiJQaXggSW50ZXJubyBSZWNlYmlkbyIsInZhbG9yIjoxMi4zNCwidGlwb01vdmltZW50YWNhbyI6MiwidGlwb0NhdGVnb3JpYSI6MTYsImRvY3VtZW50byI6IjAiLCJvYnNlcnZhY2FvIjoiVHJhbnNmZXLDqm5jaWEgaW50ZXJuYSBQSVgiLCJwcm90b2NvbG8iOiIyMTgwMDAxMDAwMzEzMTgwNzIwMjIwNjE3NTAwMDAxIiwicmVtZXRlbnRlIjp7Im5vbWUiOiJMYXRhbWdhdGV3YXkiLCJkb2N1bWVudG8iOiIzMzYzMDY2MTAwMDE1MCIsIm5vbWVCYW5jbyI6IkJjbyBCUzIgU0EiLCJiYW5jbyI6MjE4LCJhZ2VuY2lhIjoxLCJjb250YSI6OTg2NTkyNn0sImZhdm9yZWNpZG8iOm51bGwsInBpeCI6eyJlbmRUb0VuZElkIjoiRTcxMDI3ODY2MjAyMjA2MTcxODEyMzYwNDQwOTE4NVAifX1dLCJpbmljaW8iOjAsImxpbWl0ZSI6MTAwLCJ0b3RhbCI6Mn0=
+  recorded_at: Wed, 29 Jun 2022 13:03:22 GMT
+recorded_with: VCR 6.0.0

@@ -20,3 +20,5 @@
 *.swp
 *.swo
 .byebug_history
+
+/refresh_token.txt
