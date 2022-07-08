@@ -29,10 +29,14 @@ module Bs2Api
                      )
       end
 
-      attr_reader :payer
+      attr_reader :payer,
+                  :end_to_end_id,
+                  :transaction_id
 
       def initialize(details)
         @details = details
+        @end_to_end_id = @details.fetch(:endToEndId)
+        @transaction_id = @details.fetch(:txId)
 
         @account = Account.new(
           bank: @details.fetch(:pagador).fetch(:conta).fetch(:banco),
