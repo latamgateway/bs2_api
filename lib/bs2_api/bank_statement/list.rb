@@ -1,3 +1,4 @@
+require 'logger'
 require_relative '../entities/bank_statement'
 
 module Bs2Api
@@ -11,11 +12,13 @@ module Bs2Api
       def initialize(
         access_token:,
         time_range:,
-        proxy: nil
+        proxy: nil,
+        logger: Logger.new(STDOUT)
       )
         @access_token = access_token
         @time_range = time_range
         @proxy = proxy
+        @logger = logger
       end
 
       # https://devs.bs2.com/manual/bankingv2/#tag/Conta-Corrente/paths/~1pj~1apibanking~1forintegration~1v1~1contascorrentes~1extrato/get
@@ -48,7 +51,7 @@ module Bs2Api
 
       def each
         (0..Float::INFINITY).each do |page|
-          movements = call(page: page).fetch(:movimentacoes)
+          movements = fetch_page(page: page)
 
           break if movements.empty?
 
@@ -56,6 +59,26 @@ module Bs2Api
             yield Entities::BankStatement.new(movement)
           end
         end
+      end
+
+      private
+
+      def fetch_page(page:, retries: 4, retry_wait: 4)
+        last_exception = nil
+
+        retries.times do |i|
+          return call(page: page).fetch(:movimentacoes)
+        rescue => e
+          @logger.error(e)
+
+          last_exception = e
+
+          sleep(retry_wait * (i + 1))
+
+          next
+        end
+
+        raise last_exception
       end
     end
   end
