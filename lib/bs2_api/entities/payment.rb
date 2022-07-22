@@ -3,7 +3,7 @@
 module Bs2Api
   module Entities
     class Payment
-      attr_accessor :payment_id, :end_to_end_id, :receiver, :payer, :status
+      attr_accessor :payment_id, :end_to_end_id, :receiver, :payer, :status, :error_message, :error_code
 
       def initialize(args = {})
         @payment_id    = args.fetch(:payment_id, nil)
@@ -11,13 +11,17 @@ module Bs2Api
         @receiver      = args.fetch(:receiver, nil)
         @payer         = args.fetch(:payer, nil)
         @status        = args.fetch(:status, nil)
+        @error_code    = args.fetch(:error_code, nil)
+        @error_message = args.fetch(:error_message, nil)
       end
 
       def to_hash
         hash_data = {
-          "pagamentoId": @payment_id,
-          "endToEndId":  @end_to_end_id,
-          "status":      @status
+          "pagamentoId":   @payment_id,
+          "endToEndId":    @end_to_end_id,
+          "status":        @status,
+          "error_code":    @error_code,
+          "error_message": @error_message
         }
 
         hash_data.merge!({ "recebedor": @receiver.to_hash } ) if @receiver.present?
@@ -33,7 +37,9 @@ module Bs2Api
           end_to_end_id: hash["endToEndId"],
           receiver:      Bs2Api::Entities::Bank.from_response(hash["recebedor"]),
           payer:         Bs2Api::Entities::Bank.from_response(hash["pagador"]),
-          status:        hash["status"]
+          status:        hash["status"],
+          error_code:    hash['erro'].present? ? hash['erro']['erroCodigo'] : nil,
+          error_message: hash['erro'].present? ? hash['erro']['erroDescricao'] : nil
         )
       end
     end

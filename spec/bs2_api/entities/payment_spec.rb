@@ -11,11 +11,15 @@ RSpec.describe Bs2Api::Entities::Payment do
         expect(payment).to respond_to(:receiver)
         expect(payment).to respond_to(:payer)
         expect(payment).to respond_to(:status)
+        expect(payment).to respond_to(:error_code)
+        expect(payment).to respond_to(:error_message)
 
         expect(payment).to respond_to(:'payment_id=')
         expect(payment).to respond_to(:'end_to_end_id=')
         expect(payment).to respond_to(:'receiver=')
         expect(payment).to respond_to(:'status=')
+        expect(payment).to respond_to(:'error_code=')
+        expect(payment).to respond_to(:'error_message=')
       end
     end
 
@@ -46,7 +50,7 @@ RSpec.describe Bs2Api::Entities::Payment do
           "pessoa": customer_response
         }
       }
-      
+
       let!(:hash_response) {
         {
           "pagamentoId": "123",
@@ -55,7 +59,7 @@ RSpec.describe Bs2Api::Entities::Payment do
           "pagador": bank_response
         }
       }
-      
+
       let!(:receiver) { Bs2Api::Entities::Bank.from_response(bank_response) }
       let!(:payer) { Bs2Api::Entities::Bank.from_response(bank_response) }
 
@@ -92,6 +96,47 @@ RSpec.describe Bs2Api::Entities::Payment do
         expect(payment.end_to_end_id).to eq(hash_response[:endToEndId])
         expect(payment.receiver).to be_a(Bs2Api::Entities::Bank)
         expect(payment.payer).to be_a(Bs2Api::Entities::Bank)
+        expect(payment.error_code).to be_nil
+        expect(payment.error_message).to be_nil
+      end
+
+      context 'with error' do
+        let!(:error) {
+          {
+            'erroCodigo': 'DS27',
+            'erroDescricao': 'ISPB do participante receberor inexistente',
+          }
+        }
+
+        let!(:hash_response) {
+          {
+            'pagamentoId': '25bb8583-0bda-48f4-aa3f-8808585f27c2',
+            'endToEndId': '456',
+            'recebedor': bank_response,
+            'pagador': bank_response,
+            'erro': error
+          }
+        }
+
+        before do
+          @payment = described_class.new(
+            payment_id: '25bb8583-0bda-48f4-aa3f-8808585f27c2',
+            end_to_end_id: '456',
+            receiver: receiver,
+            payer: payer
+          )
+        end
+        it 'from_response to return valid object' do
+          payment = described_class.from_response(hash_response)
+
+          expect(payment).to be_a(Bs2Api::Entities::Payment)
+          expect(payment.payment_id).to eq(hash_response[:pagamentoId])
+          expect(payment.end_to_end_id).to eq(hash_response[:endToEndId])
+          expect(payment.receiver).to be_a(Bs2Api::Entities::Bank)
+          expect(payment.payer).to be_a(Bs2Api::Entities::Bank)
+          expect(payment.error_code).to eq(hash_response[:erro][:erroCodigo])
+          expect(payment.error_message).to eq(hash_response[:erro][:erroDescricao])
+        end
       end
     end
   end
