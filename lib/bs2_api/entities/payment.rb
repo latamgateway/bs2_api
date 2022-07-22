@@ -38,8 +38,8 @@ module Bs2Api
           receiver:      Bs2Api::Entities::Bank.from_response(hash["recebedor"]),
           payer:         Bs2Api::Entities::Bank.from_response(hash["pagador"]),
           status:        hash["status"],
-          error_code:    hash['erro'].present? ? hash['erro']['erroCodigo'] : nil,
-          error_message: hash['erro'].present? ? hash['erro']['erroDescricao'] : nil
+          error_code:    hash.dig('erro', 'erroCodigo'),
+          error_message: hash.dig('erro', 'erroDescricao')
         )
       end
     end
