@@ -25,6 +25,7 @@ require 'bs2_api/errors/missing_bank'
 
 require 'bs2_api/entities/account'
 require 'bs2_api/entities/bank'
+require 'bs2_api/entities/error'
 require 'bs2_api/entities/customer'
 require 'bs2_api/entities/payment'
 require 'bs2_api/entities/pix_key'
