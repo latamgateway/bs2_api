@@ -44,7 +44,7 @@ module Bs2Api
 
         raise response.body unless response.success?
 
-        response.body
+        JSON.parse(response.body, symbolize_names: true)
       end
     end
   end
