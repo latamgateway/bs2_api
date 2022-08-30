@@ -3,8 +3,16 @@
 module Bs2Api
   module Payment
     class Key < Base
-      def initialize key
+      def initialize(
+        key,
+        client_id: Bs2Api.configuration.client_id,
+        client_secret: Bs2Api.configuration.client_secret,
+        proxy: nil
+      )
         @key = key
+        @client_id = client_id
+        @client_secret = client_secret
+        @proxy = proxy
       end
       
       private

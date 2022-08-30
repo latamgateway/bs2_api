@@ -3,6 +3,30 @@
 module Bs2Api
   module Request
     class Auth
+      # TODO: See which scopes are required.
+      SCOPES = [
+        'saldo',
+        'extrato',
+        'pagamento',
+        'transferencia',
+        'cobv.write',
+        'cobv.read',
+        'comprovante',
+        'webhook-mov-conta',
+        'aprovacoes',
+        'pagamento-tributo',
+        'webhook-conclusao-transf',
+        'webhook-conclusao-pag',
+        'cob.write',
+        'cob.read',
+        'pix.write',
+        'pix.read',
+        'dict.write',
+        'dict.read',
+        'webhook.read',
+        'webhook.write',
+      ].freeze
+
       class << self
         def token(
           client_id: Bs2Api.configuration.client_id,
@@ -42,7 +66,7 @@ module Bs2Api
           def body
             {
               grant_type: "client_credentials",
-              scope: "pix.write pix.read"
+              scope: SCOPES.join("\s")
             }.to_query
           end
 

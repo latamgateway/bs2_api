@@ -2,6 +2,6 @@
 
 module Bs2Api
   module Errors
-    class BadRequest < Base; end
+    class RefundError < Base; end
   end
 end

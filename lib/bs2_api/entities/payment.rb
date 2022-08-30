@@ -3,7 +3,7 @@
 module Bs2Api
   module Entities
     class Payment
-      attr_accessor :payment_id, :end_to_end_id, :receiver, :payer, :status
+      attr_accessor :payment_id, :end_to_end_id, :receiver, :payer, :status, :error
 
       def initialize(args = {})
         @payment_id    = args.fetch(:payment_id, nil)
@@ -11,6 +11,7 @@ module Bs2Api
         @receiver      = args.fetch(:receiver, nil)
         @payer         = args.fetch(:payer, nil)
         @status        = args.fetch(:status, nil)
+        @error         = args.fetch(:error, nil)
       end
 
       def to_hash
@@ -22,6 +23,7 @@ module Bs2Api
 
         hash_data.merge!({ "recebedor": @receiver.to_hash } ) if @receiver.present?
         hash_data.merge!({ "pagador": @payer.to_hash } ) if @payer.present?
+        hash_data.merge!({ "erro": @error.to_hash } ) if @error.present?
         ActiveSupport::HashWithIndifferentAccess.new(hash_data)
       end
 
@@ -33,7 +35,8 @@ module Bs2Api
           end_to_end_id: hash["endToEndId"],
           receiver:      Bs2Api::Entities::Bank.from_response(hash["recebedor"]),
           payer:         Bs2Api::Entities::Bank.from_response(hash["pagador"]),
-          status:        hash["status"]
+          status:        hash["status"],
+          error:         Bs2Api::Entities::Error.from_response(hash["erro"])
         )
       end
     end
