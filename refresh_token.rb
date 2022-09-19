@@ -1,3 +1,6 @@
+# Script for refresh the refresh_token.
+# Can be used for development/testing.
+
 require "dotenv"
 require "bs2_api"
 require_relative "lib/bs2_api/request/auth.rb"

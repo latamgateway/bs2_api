@@ -4,7 +4,7 @@ require_relative '../entities/bank_statement'
 module Bs2Api
   module BankStatement
     class List
-      # This is the maximum
+      # This is the maximum limit
       DEFAULT_LIMIT = 100
 
       include Enumerable
