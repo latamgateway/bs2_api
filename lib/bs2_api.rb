@@ -47,6 +47,8 @@ require 'bs2_api/request/auth'
 require 'bs2_api/refund/pix/create'
 require 'bs2_api/refund/pix/detail'
 
+require 'bs2_api/bank_statement/list'
+
 module Bs2Api
   ENDPOINT = {
     production: 'https://api.bs2.com',
