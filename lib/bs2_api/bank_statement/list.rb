@@ -10,12 +10,12 @@ module Bs2Api
       include Enumerable
 
       def initialize(
-        access_token:,
+        access_token_generator:,
         time_range:,
         proxy: nil,
         logger: Logger.new(STDOUT)
       )
-        @access_token = access_token
+        @access_token_generator = access_token_generator
         @time_range = time_range
         @proxy = proxy
         @logger = logger
@@ -34,7 +34,7 @@ module Bs2Api
           headers: {
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
-            'Authorization' => "Bearer #{@access_token}",
+            'Authorization' => "Bearer #{@access_token_generator.call}",
           },
           query: {
             movimentoInicial: @time_range.begin.iso8601,
