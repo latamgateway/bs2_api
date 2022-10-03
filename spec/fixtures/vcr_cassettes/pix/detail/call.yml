@@ -1,0 +1,116 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://apihmz.bancobonsucesso.com.br/auth/oauth/v2/token
+    body:
+      encoding: UTF-8
+      string: "<FILTERED>"
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Authorization: "<FILTERED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-store
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '373'
+      Date:
+      - Wed, 29 Jun 2022 21:40:36 GMT
+      Connection:
+      - keep-alive
+      Server-Timing:
+      - cdn-cache; desc=MISS
+      - edge; dur=1020
+      - origin; dur=107
+      Content-Security-Policy:
+      - Content-Security-Policy default-src 'self'; script-src 'self'; style-src 'self'
+        'unsafe-inline'; img-src 'self' data:;
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains ; preload
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - no-referrer; strict-origin-when-cross-origin
+    body:
+      encoding: UTF-8
+      string: "{\r\n  \"access_token\":\"6a52aed4-4f21-42a0-b581-c71a0aa0bd45\",\r\n
+        \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":420,\r\n  \"scope\":\"saldo
+        extrato pagamento transferencia cobv.write cobv.read comprovante webhook-mov-conta
+        aprovacoes pagamento-tributo webhook-conclusao-transf webhook-conclusao-pag
+        cob.write cob.read pix.write pix.read dict.write dict.read webhook.read webhook.write\"\r\n}"
+  recorded_at: Wed, 29 Jun 2022 21:40:36 GMT
+- request:
+    method: get
+    uri: https://apihmz.bancobonsucesso.com.br/pix/direto/forintegration/v1/recebimentos/E710278662022061718123604409185P/recebimento?Fim=2022-06-29T21:00:00Z&Inicio=2022-01-01T00:00:00Z&TxId=
+    body:
+      encoding: UTF-8
+      string: "<FILTERED>"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Authorization: "<FILTERED>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '1108'
+      Date:
+      - Wed, 29 Jun 2022 21:40:38 GMT
+      Connection:
+      - keep-alive
+      Server-Timing:
+      - cdn-cache; desc=MISS
+      - edge; dur=384
+      - origin; dur=878
+      Content-Security-Policy:
+      - Content-Security-Policy default-src 'self'; script-src 'self'; style-src 'self'
+        'unsafe-inline'; img-src 'self' data:;
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains ; preload
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache; no-store; max-age=0; must-revalidate
+      Referrer-Policy:
+      - no-referrer; strict-origin-when-cross-origin
+    body:
+      encoding: UTF-8
+      string: '{"endToEndId":"E710278662022061718123604409185P","recebimentoId":4452891,"txId":"ae1fcbc93ba6452bbc06124eab3e7fca","data":"2022-06-17T15:14:56.76-03:00","valor":12.34,"status":"Efetivado","pagador":{"ispb":"71027866","conta":{"banco":"218","bancoNome":"BCO
+        BS2 S.A.","agencia":"0001","numero":"9865926","tipo":"Poupanca"},"pessoa":{"documento":"33630661000150","tipoDocumento":"CPF","nome":"latamgateway","nomeFantasia":null,"conta":null}},"recebedor":{"ispb":"71027866","conta":{"banco":"218","bancoNome":"BCO
+        BS2 S.A.","agencia":"0001","numero":"3131807","tipo":"Poupanca"},"pessoa":{"documento":"33630661000150","tipoDocumento":"CPF","nome":"latamgateway","nomeFantasia":null,"conta":null}},"chaveDict":"610847cf-7add-4a88-85df-8e60908ea021","campoLivre":null,"situacao":"ACCC","devolucoes":[{"id":"bb1e863c2f5b4d41907d034d4d235775","rtrId":"D710278662022061718343253314142D","valor":12.34,"horario":{"solicitacao":"2022-06-17T15:34:32.533-03:00","liquidacao":"2022-06-17T15:34:33.947-03:00"},"status":"DEVOLVIDO","motivo":"Solicitado
+        pelo cliente"}],"pagina":{"qtd":1,"paginaAtual":1,"itensPorPagina":1}}'
+  recorded_at: Wed, 29 Jun 2022 21:40:38 GMT
+recorded_with: VCR 6.0.0

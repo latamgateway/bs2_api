@@ -21,3 +21,5 @@
 *.swo
 .byebug_history
 .vscode
+
+/refresh_token.txt
