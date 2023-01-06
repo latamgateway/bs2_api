@@ -33,16 +33,17 @@ module Bs2Api
         !!@success
       end
 
+      def payload
+        @payment.to_hash
+                .except!("pagamentoId", "endToEndId")
+                .merge("valor": @value)
+      end
+
       private
-        def payload
-          @payment.to_hash
-                  .except!("pagamentoId", "endToEndId")
-                  .merge("valor": @value)
-        end
-        
-        def url
-          "#{Bs2Api.endpoint}/pix/direto/forintegration/v1/pagamentos/#{@payment.payment_id}/confirmacao"
-        end
+
+      def url
+        "#{Bs2Api.endpoint}/pix/direto/forintegration/v1/pagamentos/#{@payment.payment_id}/confirmacao"
+      end
     end
   end
 end
