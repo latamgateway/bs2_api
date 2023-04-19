@@ -32,12 +32,12 @@ Gem::Specification.new do |spec|
   spec.add_dependency("bundler")
   spec.add_dependency("rake")
   spec.add_dependency("activesupport")
-  spec.add_dependency("httparty", "~> 0.18.1")
+  spec.add_dependency("httparty", "~> 0.21.0")
 
   spec.add_development_dependency("pry-byebug", "~> 3.9")
   spec.add_development_dependency("uuid", "~> 2.3", ">= 2.3.9")
   spec.add_development_dependency("rspec", "~> 3.10")
-  spec.add_development_dependency("webmock", "~> 3.13")
+  spec.add_development_dependency("webmock", "~> 3.14")
   spec.add_development_dependency("vcr", "~> 6.0")
   spec.add_development_dependency("dotenv", "~> 2.7", ">= 2.7.6")
 end
