@@ -7,11 +7,13 @@ module Bs2Api
         payment_id,
         client_id: Bs2Api.configuration.client_id,
         client_secret: Bs2Api.configuration.client_secret,
+        user_agent: Bs2Api.configuration.user_agent,
         proxy: nil
       )
         @payment_id = payment_id
         @client_id = client_id
         @client_secret = client_secret
+        @user_agent = user_agent
         @proxy = proxy
       end
 

@@ -11,12 +11,14 @@ module Bs2Api
         def initialize(
           client_id:,
           client_secret:,
+          user_agent:,
           end_to_end_id:,
           transaction_id:,
           proxy: nil
         )
           @client_id = client_id
           @client_secret = client_secret
+          @user_agent = user_agent
           @end_to_end_id = end_to_end_id
           @transaction_id = transaction_id
           @proxy = proxy
@@ -41,6 +43,7 @@ module Bs2Api
               'Content-Type' => 'application/json',
               'Accept' => 'application/json',
               'Authorization' => "Bearer #{access_token}",
+              'User-Agent' => @user_agent,
             }
           )
 

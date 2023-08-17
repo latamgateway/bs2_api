@@ -13,6 +13,7 @@ jobs:
       BS2_ENVIRONMENT: 'sandbox'
       BS2_CLIENT_ID: '123'
       BS2_CLIENT_SECRET: '123'
+      BS2_HASH: 'A0B1C2D3E4F5'
       BS2_EVP_TEST_KEY: '123'
     
     strategy:
