@@ -33,7 +33,8 @@ module Bs2Api
         {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          'Authorization': "Bearer #{bearer_token}"
+          'Authorization': "Bearer #{bearer_token}",
+          'User-Agent' => @user_agent,
         }
       end
 

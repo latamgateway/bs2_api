@@ -6,6 +6,7 @@ module Bs2Api
       def initialize(
         client_id:,
         client_secret:,
+        user_agent:,
         end_to_end_id:,
         time_range:,
         transaction_id: nil,
@@ -13,6 +14,7 @@ module Bs2Api
       )
         @client_id = client_id
         @client_secret = client_secret
+        @user_agent = user_agent
         @end_to_end_id = end_to_end_id
         @time_range = time_range
         @transaction_id = transaction_id
@@ -36,6 +38,7 @@ module Bs2Api
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
             'Authorization' => "Bearer #{access_token}",
+            'User-Agent' => @user_agent,
           },
           query: {
             Inicio: @time_range.begin.iso8601,
